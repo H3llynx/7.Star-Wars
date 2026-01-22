@@ -1,6 +1,7 @@
 import { createHashRouter } from "react-router";
 import { Layout } from "./components/Layout/Layout";
 import { HomePage } from "./features/HomePage/HomePage";
+import { StarShips } from "./features/StarShips/StarShips";
 
 export const router = createHashRouter([
     {
@@ -10,6 +11,10 @@ export const router = createHashRouter([
             {
                 index: true,
                 element: <HomePage />
+            },
+            {
+                path: "starships",
+                element: <StarShips />
             }
         ]
     }
