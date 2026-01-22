@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router';
+import Hub from "../../assets/svg/hub-border.svg?react";
+import { Header } from '../Header/Header';
+import "./Layout.css";
 
 export function Layout() {
     const { pathname } = useLocation();
@@ -10,6 +13,8 @@ export function Layout() {
 
     return (
         <>
+            <Hub className="hub-screen" />
+            <Header />
             <Outlet />
         </>
     );

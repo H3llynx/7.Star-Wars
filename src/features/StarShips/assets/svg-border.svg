@@ -20,7 +20,8 @@
             </feMerge>
         </filter>
     </defs>
-    <!-- BORDURE HUD -->
+
+    <!-- BORDER HUD -->
     <path d="
       M 0 50
       L 40 0
@@ -47,5 +48,5 @@
       L 8 282
       L 0 270
       Z
-    " fill="none" stroke="url(#borderGradient)" stroke-width="1.5" vector-effect="non-scaling-stroke" filter="url(#hudGlow)" />
+    " fill="none" stroke="url(#borderGradient)" stroke-width="2" vector-effect="non-scaling-stroke" filter="url(#hudGlow)" />
 </svg>

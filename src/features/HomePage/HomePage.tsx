@@ -1,14 +1,13 @@
-import Hub from "../../assets/svg/hub-border.svg?react"
+import "./HomePage.css";
 
 export function HomePage() {
     return (
-        <main>
-            <Hub className="hub-border" />
+        <section className="home-block">
             <div className="hub-container">
                 <h1>Homepage</h1>
-                <h2>Header 2</h2>
+                <h3>Header 2</h3>
                 <p>This will be the main text font and size</p>
             </div>
-        </main>
+        </section>
     )
 }
