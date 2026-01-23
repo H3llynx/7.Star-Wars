@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
 import Hud from "../../assets/svg/hud-border.svg?react";
 import { SectionIntro } from "../../components/SectionIntro/SectionIntro";
-import { getData } from "./api/api-service";
+import { getShips } from "./api/starships-service";
 import { ShipCard } from "./components/ShipCard/ShipCard";
 import "./StarShips.css";
 import type { StarShip } from "./types";
-
+localStorage.removeItem("starships")
 export function StarShips() {
-    const [ships, setShips] = useState<StarShip[]>([])
+    const [ships, setShips] = useState<StarShip[]>([]);
+
     useEffect(() => {
-        const fetchShips = async () => {
-            const URL = "https://swapi.dev/api/starships/?page=1";
-            const data = await getData(URL);
-            setShips(data.results);
+        const loadShips = async () => {
+            const stored = localStorage.getItem("starships");
+            if (stored && stored !== "undefined") {
+                setShips(JSON.parse(stored));
+            }
+            else {
+                const ships = await getShips(1);
+                setShips(ships);
+                localStorage.setItem("starships", JSON.stringify(ships));
+            }
         }
-        fetchShips();
+        loadShips();
     }, []);
-    const getShipId = (url: string): string => {
-        return url.split('/').slice(-2, -1)[0];
-    }
+
     return (
         <div className="centered">
             <SectionIntro title="Starship catalog" />
@@ -28,7 +33,7 @@ export function StarShips() {
                     {ships.map(ship => {
                         return (
                             <ShipCard
-                                key={getShipId(ship.url)}
+                                key={ship.id}
                                 {...ship} />
                         )
                     })}

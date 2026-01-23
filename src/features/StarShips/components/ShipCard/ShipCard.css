@@ -23,21 +23,10 @@
     gap: 1rem;
 }
 
-.ship-img-container {
+.ship-img {
     grid-area: image;
-    aspect-ratio: 4 / 4;
-    clip-path: polygon(0% 10%,
-            12% 0%,
-            100% 0%,
-            100% 85%,
-            85% 100%,
-            0% 100%);
-    mix-blend-mode: screen;
-
-    img {
-        width: 100%;
-        object-fit: cover;
-    }
+    width: 100%;
+    object-fit: cover;
 }
 
 .title-container {

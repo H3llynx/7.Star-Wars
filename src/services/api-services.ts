@@ -1,4 +1,4 @@
-export async function getData(url: string, headers?: Record<string, string>) {
+export const getData = async (url: string, headers?: Record<string, string>) => {
     try {
         const response = await fetch(url, {
             method: "GET",
