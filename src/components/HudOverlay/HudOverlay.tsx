@@ -12,7 +12,7 @@ export function HudOverlay() {
                 <span>SECTOR 03</span>
 
                 <span className="sync">
-                    SYNC <i className="dot" />
+                    SYNC
                 </span>
             </div>
         </div>

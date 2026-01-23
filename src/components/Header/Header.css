@@ -86,6 +86,14 @@ nav {
         cursor: default;
         pointer-events: none;
     }
+
+    &:not(.active) {
+        opacity: 0.4;
+    }
+
+    &:not(.active):hover {
+        opacity: 1;
+    }
 }
 
 

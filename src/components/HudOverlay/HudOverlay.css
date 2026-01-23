@@ -1,3 +1,17 @@
+@keyframes pulse {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
 .hud-screen {
     position: absolute;
     pointer-events: none;
@@ -35,25 +49,12 @@
 .sync::after {
     content: " ";
     display: inline-block;
+    margin-left: 5px;
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background: var(--color-blue-neon);
     animation: pulse 3s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 0.2;
-    }
-
-    50% {
-        opacity: 0.8;
-    }
-
-    100% {
-        opacity: 0.2;
-    }
 }
 
 @media (orientation: portrait) {
