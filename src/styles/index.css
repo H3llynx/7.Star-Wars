@@ -6,25 +6,23 @@
   --font-black-ops: "Black Ops One", system-ui;
   --color-dark: rgb(30, 30, 30);
   --color-light: rgb(220, 240, 255);
-  --color-light-rgba: rgba(220, 240, 255, 0.85);
   --color-blue-neon-rgba: rgba(143, 220, 255, 0.6);
-  --color-blue-neon-rgba-2: rgba(143, 220, 255, 0.4);
+  --color-blue-neon-rgba-2: rgba(143, 220, 255, 0.3);
   --color-dark-rgba: rgba(0, 0, 0, 0.85);
   --color-blue-neon: rgb(143, 220, 255);
-  --bg-hangar: url(../assets/images/app-bg.png);
   --neon-gradient: linear-gradient(90deg,
       rgb(200, 243, 255),
       rgb(143, 220, 255),
       rgb(111, 184, 230),
       rgb(79, 163, 209));
-  --neon-gradient-rgba: linear-gradient(90deg,
+  --neon-gradient-rgba: linear-gradient(130deg,
       rgba(200, 243, 255, 0.1),
       rgba(143, 220, 255, 0.2),
-      rgba(111, 184, 230, 0.2),
-      rgba(79, 163, 209, 0.2));
+      rgba(111, 184, 230, 0.1),
+      rgba(79, 163, 209, 0.1));
   --scrollbar-gradient: linear-gradient(180deg,
       rgba(143, 220, 255, 0.9),
-      rgba(90, 190, 255, 0.8));
+      rgba(79, 163, 209, 0.8));
   --hud-clip: polygon(0% 8.33%, 5% 0%, 45% 0%, 47% 3%, 53% 3%, 55% 0%, 95% 0%, 100% 8.33%,
       100% 45%, 99% 47%, 99% 53%, 100% 55%,
       100% 91.67%, 95% 100%, 55% 100%, 53% 97%, 47% 97%, 45% 100%, 5% 100%, 0% 91.67%,
@@ -32,8 +30,8 @@
   --hud-gradient: linear-gradient(135deg,
       rgba(10, 25, 40, 0.58),
       rgba(5, 15, 25, 0.92));
-  --overlay: linear-gradient(140deg,
-      rgba(0, 0, 0, 0.8),
+  --overlay: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.6),
       transparent);
   background-color: var(--color-dark);
 }
@@ -46,17 +44,13 @@
 }
 
 body {
-  width: 100vw;
-  min-height: 100dvh;
-  background-image: var(--bg-hangar);
+  background-image: url(../assets/images/app-bg.png);
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
   color: var(--color-light);
   font-family: var(--font-inter);
   font-size: 0.85rem;
-  display: flex;
-  justify-content: center;
 
   &::before {
     background: var(--overlay);
@@ -69,28 +63,45 @@ body {
   }
 }
 
-section {
-  width: min(1000px, 80vw);
-  margin: auto;
-}
-
-.text-block {
-  filter:
-    drop-shadow(0 0 8px var(--color-blue-neon-rgba));
-}
-
-.hub-border {
+.hud-border-svg {
   position: absolute;
   pointer-events: none;
   width: 100%;
   height: 100%;
   z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+header,
+section {
+  width: min(1000px, 80vw);
+  position: relative;
+}
+
+.centered {
+  margin: auto 0;
+}
+
+.hud,
+.neon-block {
+  clip-path: var(--hud-clip);
+  background: var(--color-dark-rgba) var(--neon-gradient-rgba);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+.neon-block {
+  padding: 3rem 5rem;
+}
+
+article {
+  padding: 2rem;
 }
 
 .neon-text,
 h1,
-h2,
-h4 {
+h2 {
   background: var(--neon-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -110,8 +121,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(0.9rem, 3vw, 1.1rem);
-  margin-bottom: 1.8rem;
+  font-size: clamp(0.7rem, 1.2vw, 1rem);
 }
 
 
@@ -127,12 +137,18 @@ h3 {
   }
 
   section {
-    height: 65dvh;
+    height: 60dvh;
   }
+
 }
 
 @media (orientation: portrait) {
-  .hub-screen {
+  .hud-screen {
     display: none;
+  }
+
+  .hud {
+    clip-path: none;
+    background: none;
   }
 }

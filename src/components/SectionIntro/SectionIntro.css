@@ -1,0 +1,31 @@
+.intro-hud {
+    width: min(1000px, 80vw);
+    position: relative;
+    z-index: 1;
+}
+
+.hud-line {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right,
+            transparent,
+            rgba(143, 220, 255, 0.5),
+            transparent);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+}
+
+.hud-label {
+    margin-bottom: 0.4rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-blue-neon-rgba-2);
+    font-family: var(--font-orbitron);
+}
+
+@media (max-width: 600px) {
+    .intro-hud {
+        display: none;
+    }
+}

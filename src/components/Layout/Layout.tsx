@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router';
-import Hub from "../../assets/svg/hub-border.svg?react";
 import { Header } from '../Header/Header';
+import { HudOverlay } from '../HudOverlay/HudOverlay';
 import "./Layout.css";
 
 export function Layout() {
@@ -12,10 +12,10 @@ export function Layout() {
     }, [pathname]);
 
     return (
-        <>
-            <Hub className="hub-screen" />
+        <div className="app-container">
+            <HudOverlay />
             <Header />
             <Outlet />
-        </>
+        </div>
     );
 };

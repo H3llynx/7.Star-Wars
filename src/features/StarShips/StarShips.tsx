@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Hub from "../../assets/svg/hub-border.svg?react";
+import Hud from "../../assets/svg/hud-border.svg?react";
+import { SectionIntro } from "../../components/SectionIntro/SectionIntro";
 import { getData } from "./api/api-service";
 import { ShipCard } from "./components/ShipCard/ShipCard";
 import "./StarShips.css";
@@ -19,17 +20,20 @@ export function StarShips() {
         return url.split('/').slice(-2, -1)[0];
     }
     return (
-        <section className="starship-block">
-            <Hub className="hub-border" />
-            <article className="ship-list">
-                {ships.map(ship => {
-                    return (
-                        <ShipCard
-                            key={getShipId(ship.url)}
-                            {...ship} />
-                    )
-                })}
-            </article>
-        </section>
+        <div className="centered">
+            <SectionIntro title="Starship catalog" />
+            <section className="hud">
+                <Hud className="hud-border-svg mb-hidden" />
+                <article className="ship-list">
+                    {ships.map(ship => {
+                        return (
+                            <ShipCard
+                                key={getShipId(ship.url)}
+                                {...ship} />
+                        )
+                    })}
+                </article>
+            </section>
+        </div>
     )
 }

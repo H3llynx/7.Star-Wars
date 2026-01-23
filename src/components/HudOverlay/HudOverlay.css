@@ -1,0 +1,63 @@
+.hud-screen {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hud-overlay {
+    background: url(../../assets/svg/hud-border.svg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 95%;
+    pointer-events: none;
+    z-index: 1;
+    font-family: var(--font-inter);
+    padding: 0.8% 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hud-top,
+.hud-bottom {
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: clamp(0.3rem, 1vw, 0.7rem);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-blue-neon-rgba-2);
+}
+
+.sync::after {
+    content: " ";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-blue-neon);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+@media (orientation: portrait) {
+    .hud-overlay {
+        display: none;
+    }
+}

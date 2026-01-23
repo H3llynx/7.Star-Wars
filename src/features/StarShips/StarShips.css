@@ -1,17 +1,10 @@
-.starship-block {
-    position: relative;
-    clip-path: var(--hud-clip);
-    background: var(--color-dark-rgba) var(--neon-gradient-rgba);
-}
-
 .ship-list {
     width: 100%;
     height: 100%;
-    padding: 3rem 4rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
     overflow-y: scroll;
 }
 
@@ -50,19 +43,23 @@
 
     .ship-list {
         overflow: auto;
-        padding: 2rem 2rem 8rem 2rem;
-        justify-content: center;
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .hub-border {
+    .mb-hidden {
         display: none;
     }
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .ship-list {
-        padding: 2rem 1rem 5rem 1rem;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+    .ship-list {
+        padding: 0.2rem 0.2rem 2rem 0.2rem;
     }
 }
