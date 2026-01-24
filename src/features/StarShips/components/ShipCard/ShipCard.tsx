@@ -1,11 +1,17 @@
-import type { StarShip } from "../../types"
-import "./ShipCard.css"
+import type { StarShip } from "../../types";
+import "./ShipCard.css";
 
 export function ShipCard(ship: StarShip) {
     return (
         <article className="hud-card">
             <div className="hud-frame">
-                <img src={ship.src} className="ship-img" alt="" />
+                <img
+                    src={`starships/${ship.id}.webp`}
+                    onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = "jarjar.png";
+                    }}
+                    className="ship-img" alt=""
+                />
                 <div className="title-container">
                     <h3>{ship.name}</h3>
                     <span className="speed">MAX ATMO VELOCITY: {ship.max_atmosphering_speed}</span>

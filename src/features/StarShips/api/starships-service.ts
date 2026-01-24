@@ -1,6 +1,6 @@
 import { getData } from "../../../services/api-services";
 import type { StarShip } from "../types";
-import { getShipId, getShipImg } from "./utils";
+import { getShipId } from "./utils";
 
 export const getShips = async (page: number) => {
     const URL = `https://swapi.dev/api/starships/?page=${page}`;
@@ -9,7 +9,6 @@ export const getShips = async (page: number) => {
     ships.forEach((ship: StarShip) => {
         ship.id = getShipId(ship.url);
         ship.starship_class = ship.starship_class.toLowerCase();
-        ship.src = getShipImg(ship.starship_class);
     })
     return ships;
 };
