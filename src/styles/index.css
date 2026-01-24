@@ -55,11 +55,6 @@
   margin: 0;
   padding: 0;
   font-weight: normal;
-
-  &:focus-visible {
-    outline: none;
-    animation: shadow-pulse 1.5s ease-in-out infinite;
-  }
 }
 
 body {
