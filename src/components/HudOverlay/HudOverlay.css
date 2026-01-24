@@ -43,7 +43,8 @@
     font-size: clamp(0.3rem, 1vw, 0.7rem);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-blue-neon-rgba-2);
+    color: var(--color-blue-neon-rgba);
+    opacity: 0.6;
 }
 
 .sync::after {
@@ -55,10 +56,4 @@
     border-radius: 50%;
     background: var(--color-blue-neon);
     animation: pulse 3s ease-in-out infinite;
-}
-
-@media (orientation: portrait) {
-    .hud-overlay {
-        display: none;
-    }
 }

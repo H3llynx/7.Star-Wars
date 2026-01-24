@@ -1,21 +1,13 @@
 .intro-hud {
-    width: min(1000px, 80vw);
     position: relative;
     z-index: 1;
 
-    p {
-        width: 100%;
-        padding-bottom: 0.4rem;
-        margin-bottom: 0.8rem;
-        font-size: clamp(0.4rem, 0.8vw, 0.55rem);
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        color: var(--color-blue-neon-rgba-2);
-        font-family: var(--font-orbitron);
+    h2 {
+        opacity: 0.6;
         border-bottom: 1px solid transparent;
         border-image: linear-gradient(to right,
                 transparent,
-                rgba(143, 220, 255, 0.3),
+                rgba(220, 240, 255, 0.6),
                 transparent) 1;
     }
 }

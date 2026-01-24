@@ -1,14 +1,13 @@
-//import Ship from "../../assets/ship.png"
 import type { StarShip } from "../../types"
 import "./ShipCard.css"
 
 export function ShipCard(ship: StarShip) {
     return (
-        <div className="hud-card">
+        <article className="hud-card">
             <div className="hud-frame">
-                <img src={ship.src} className="ship-img" />
+                <img src={ship.src} className="ship-img" alt="" />
                 <div className="title-container">
-                    <h2>{ship.name}</h2>
+                    <h3>{ship.name}</h3>
                     <span className="speed">MAX ATMO VELOCITY: {ship.max_atmosphering_speed}</span>
                 </div>
                 <div className="stats-container">
@@ -22,6 +21,6 @@ export function ShipCard(ship: StarShip) {
                     </div>
                 </div>
             </div>
-        </div>
+        </article>
     )
 }

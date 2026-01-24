@@ -5,9 +5,10 @@ import { getShips } from "./api/starships-service";
 import { ShipCard } from "./components/ShipCard/ShipCard";
 import "./StarShips.css";
 import type { StarShip } from "./types";
-localStorage.removeItem("starships")
+
 export function StarShips() {
     const [ships, setShips] = useState<StarShip[]>([]);
+    const [pages, setPages] = useState(0);
 
     useEffect(() => {
         const loadShips = async () => {
@@ -19,25 +20,30 @@ export function StarShips() {
                 const ships = await getShips(1);
                 setShips(ships);
                 localStorage.setItem("starships", JSON.stringify(ships));
+                setPages(1);
             }
         }
         loadShips();
     }, []);
+
+
 
     return (
         <div className="centered">
             <SectionIntro title="Starship catalog" />
             <section className="hud">
                 <Hud className="hud-border-svg mb-hidden" />
-                <article className="ship-list">
+                <ul className="ship-list">
                     {ships.map(ship => {
                         return (
-                            <ShipCard
-                                key={ship.id}
-                                {...ship} />
+                            <li key={ship.id}>
+                                <ShipCard
+                                    {...ship} />
+                            </li>
                         )
                     })}
-                </article>
+
+                </ul>
             </section>
         </div>
     )

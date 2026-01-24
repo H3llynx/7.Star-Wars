@@ -44,7 +44,8 @@ nav {
     clip-path: var(--hud-clip);
     padding: 1.5rem;
 
-    &:hover .active {
+    &:hover .active,
+    &:has(:focus-visible) .active {
         opacity: 0.4;
     }
 }
@@ -72,7 +73,8 @@ nav {
     }
 
     &.active::after,
-    &:hover::after {
+    &:hover::after,
+    &:focus-visible::after {
         content: " ";
         height: 3px;
         background: var(--color-blue-neon);
@@ -91,7 +93,8 @@ nav {
         opacity: 0.4;
     }
 
-    &:not(.active):hover {
+    &:not(.active):hover,
+    &:not(.active):focus-visible {
         opacity: 1;
     }
 }

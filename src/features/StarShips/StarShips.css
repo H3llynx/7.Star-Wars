@@ -1,11 +1,43 @@
+.hud::before {
+    content: " ";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom,
+            var(--color-dark-rgba-2) 40%,
+            transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hud::after {
+    content: " ";
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    right: 1px;
+    height: 60px;
+    background: linear-gradient(to top,
+            var(--color-dark-rgba-2) 40%,
+            transparent);
+    pointer-events: none;
+}
+
 .ship-list {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     justify-items: center;
     gap: 2rem;
     overflow-y: scroll;
+    padding: 3.5rem 2rem;
+
+    li {
+        display: block;
+    }
 }
 
 .ship-list::-webkit-scrollbar {
@@ -36,6 +68,12 @@
 }
 
 @media (orientation: portrait) {
+
+    .hud::after,
+    .hud::before {
+        display: none;
+    }
+
     .starship-block {
         clip-path: none;
         background: none;
@@ -45,12 +83,20 @@
         overflow: auto;
         grid-template-columns: minmax(0, 1fr);
     }
-
-    .mb-hidden {
-        display: none;
-    }
 }
 
+@media (max-width: 1200px) {
+
+    .hud::after,
+    .hud::before {
+        height: 30px;
+    }
+
+    .ship-list {
+        padding: 2.5rem 2rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
 
 @media (max-width: 600px) {
     .ship-list {

@@ -7,8 +7,9 @@
   --color-dark: rgb(30, 30, 30);
   --color-light: rgb(220, 240, 255);
   --color-blue-neon-rgba: rgba(143, 220, 255, 0.6);
-  --color-blue-neon-rgba-2: rgba(143, 220, 255, 0.3);
+  --color-blue-neon-rgba-2: rgba(143, 220, 255, 0.35);
   --color-dark-rgba: rgba(0, 0, 0, 0.85);
+  --color-dark-rgba-2: rgba(10, 25, 30, 0.8);
   --color-blue-neon: rgb(143, 220, 255);
   --neon-gradient: linear-gradient(90deg,
       rgb(200, 243, 255),
@@ -33,7 +34,20 @@
   --overlay: linear-gradient(180deg,
       rgba(0, 0, 0, 0.6),
       transparent);
+  --full-width: 80vw;
   background-color: var(--color-dark);
+}
+
+@keyframes shadow-pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 4px var(--color-blue-neon-rgba)) drop-shadow(0 0 8px var(--color-blue-neon-rgba-2));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 8px rgba(143, 220, 255, 0.8)) drop-shadow(0 0 16px var(--color-blue-neon-rgba)) drop-shadow(0 0 24px var(--color-blue-neon-rgba-2));
+  }
 }
 
 * {
@@ -41,6 +55,11 @@
   margin: 0;
   padding: 0;
   font-weight: normal;
+
+  &:focus-visible {
+    outline: none;
+    animation: shadow-pulse 1.5s ease-in-out infinite;
+  }
 }
 
 body {
@@ -75,7 +94,7 @@ body {
 
 header,
 section {
-  width: min(1000px, 80vw);
+  width: var(--full-width);
   position: relative;
 }
 
@@ -92,16 +111,12 @@ section {
 }
 
 .neon-block {
-  padding: 3rem 5rem;
-}
-
-article {
-  padding: 2rem;
+  padding: 3rem;
 }
 
 .neon-text,
 h1,
-h2 {
+h3 {
   background: var(--neon-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -109,7 +124,7 @@ h2 {
 }
 
 h1,
-h2 {
+h3 {
   font-family: var(--font-orbitron);
   filter:
     drop-shadow(0 0 2px rgba(143, 220, 255, 0.5)) drop-shadow(0 0 6px rgba(79, 163, 209, 0.35));
@@ -121,14 +136,29 @@ h1 {
 }
 
 h2 {
+  font-size: clamp(0.4rem, 0.8vw, 0.55rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-family: var(--font-orbitron);
+  padding-bottom: 0.4rem;
+  margin: 0.8rem 0;
+}
+
+h3 {
   font-size: clamp(0.7rem, 1.2vw, 1rem);
 }
 
 
-h3 {
+h4 {
   font-family: var(--font-black-ops);
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --full-width: 70vw;
+  }
 }
 
 @media (orientation: landscape) {
@@ -137,7 +167,7 @@ h3 {
   }
 
   section {
-    height: 60dvh;
+    height: 58dvh;
   }
 
 }
@@ -150,5 +180,9 @@ h3 {
   .hud {
     clip-path: none;
     background: none;
+  }
+
+  .mb-hidden {
+    display: none;
   }
 }
