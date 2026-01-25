@@ -7,6 +7,13 @@
     max-width: 380px;
     filter:
         drop-shadow(0 0 3px var(--color-blue-neon));
+
+    &:hover,
+    &:focus-visible {
+        transform: scale(1.05);
+        outline: 2px solid var(--color-blue-neon);
+        outline-offset: 10px;
+    }
 }
 
 .hud-frame {

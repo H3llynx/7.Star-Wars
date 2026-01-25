@@ -1,7 +1,19 @@
-import type { Preview } from '@storybook/react-vite';
+import type { Decorator, Preview } from '@storybook/react-vite';
+import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router';
+import { store } from "../src/app/store";
 import "../src/styles/index.css";
 
+const withProviders: Decorator = (Story) => (
+  <MemoryRouter>
+    <Provider store={store}>
+      {Story()}
+    </Provider>
+  </MemoryRouter>
+);
+
 const preview: Preview = {
+  decorators: [withProviders],
   parameters: {
     controls: {
       matchers: {
@@ -18,5 +30,6 @@ const preview: Preview = {
     }
   },
 };
+
 
 export default preview;

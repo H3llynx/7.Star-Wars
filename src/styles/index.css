@@ -38,18 +38,6 @@
   background-color: var(--color-dark);
 }
 
-@keyframes shadow-pulse {
-
-  0%,
-  100% {
-    filter: drop-shadow(0 0 4px var(--color-blue-neon-rgba)) drop-shadow(0 0 8px var(--color-blue-neon-rgba-2));
-  }
-
-  50% {
-    filter: drop-shadow(0 0 8px rgba(143, 220, 255, 0.8)) drop-shadow(0 0 16px var(--color-blue-neon-rgba)) drop-shadow(0 0 24px var(--color-blue-neon-rgba-2));
-  }
-}
-
 @keyframes scan {
   0% {
     left: -100%;
@@ -78,6 +66,8 @@
   margin: 0;
   padding: 0;
   font-weight: normal;
+  transition: 0.6s;
+
 }
 
 body {
@@ -201,7 +191,6 @@ h4 {
 
   &:focus-visible {
     outline: none;
-    animation: shadow-pulse 1.5s ease-in-out infinite;
   }
 
   &::after {
