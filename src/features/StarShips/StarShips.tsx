@@ -5,7 +5,7 @@ import { getShips } from "./api/starships-service";
 import { LoadMoreBtn } from "./components/LoadMoreBtn/LoadMoreBtn";
 import { ShipCard } from "./components/ShipCard/ShipCard";
 import "./StarShips.css";
-import type { StarShip } from "./types";
+import type { StarShip } from "./types/types";
 
 export function StarShips() {
     const [ships, setShips] = useState<StarShip[]>([]);

@@ -1,4 +1,4 @@
-import type { StarShip } from "../../types";
+import type { StarShip } from "../../types/types";
 import "./ShipCard.css";
 
 export function ShipCard(ship: StarShip) {
@@ -6,7 +6,7 @@ export function ShipCard(ship: StarShip) {
         <article className="hud-card">
             <div className="hud-frame">
                 <img
-                    src={`starships/${ship.id}.webp`}
+                    src={ship.src}
                     onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = "jarjar.png";
                     }}

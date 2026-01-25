@@ -1,15 +1,21 @@
 import { getData } from "../../../services/api-services";
-import type { StarShip } from "../types";
+import { StarShipResultsSchema } from "../types/zod-validation";
 import { getShipId } from "./utils";
 
 export const getShips = async (page: number) => {
     const URL = `https://swapi.dev/api/starships/?page=${page}`;
     const data = await getData(URL);
-    const ships = data.results;
-    ships.forEach((ship: StarShip) => {
-        ship.id = getShipId(ship.url);
-        ship.starship_class = ship.starship_class.toLowerCase();
-    })
+    const validated = StarShipResultsSchema.parse(data).results;
+
+    const ships = validated.map((ship) => {
+        const id = getShipId(ship.url);
+        return {
+            ...ship,
+            id,
+            src: `starships/${id}.webp`
+        };
+    });
+
     return ships;
 };
 

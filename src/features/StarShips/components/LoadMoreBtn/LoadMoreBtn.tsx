@@ -1,4 +1,4 @@
-import type { LoadMoreBtnProps } from "../../types";
+import type { LoadMoreBtnProps } from "../../types/types";
 import "./LoadMoreBtn.css";
 
 export function LoadMoreBtn({ item, onClick }: LoadMoreBtnProps) {
