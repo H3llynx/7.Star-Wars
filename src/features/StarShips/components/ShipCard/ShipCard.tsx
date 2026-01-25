@@ -1,9 +1,15 @@
+import { Link } from "react-router";
 import type { StarShip } from "../../types/types";
 import "./ShipCard.css";
 
 export function ShipCard(ship: StarShip) {
     return (
-        <article className="hud-card">
+        <Link
+            to={`/starships/${ship.id}`}
+            className="hud-card"
+            state={{ ship }}
+            tabIndex={0}
+        >
             <div className="hud-frame">
                 <img
                     src={ship.src}
@@ -27,6 +33,6 @@ export function ShipCard(ship: StarShip) {
                     </div>
                 </div>
             </div>
-        </article>
+        </Link>
     )
 }

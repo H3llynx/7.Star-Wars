@@ -4,8 +4,8 @@ export type StarShip = {
     model: string;
     max_atmosphering_speed: string;
     starship_class: string;
-    url: string;
     src: string;
+    manufacturer?: string;
 }
 
 export type LoadMoreBtnProps = {

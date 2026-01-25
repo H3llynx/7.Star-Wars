@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getShips } from './api/starships-service';
+import { getShipById, getShips } from './api/starships-service';
 import type { StarShip } from './types/types';
 
 type StarshipsState = {
@@ -7,6 +7,9 @@ type StarshipsState = {
     loading: boolean;
     error: string | null;
     currentApiPage: number;
+    selectedShip: StarShip | null;
+    selectedShipLoading: boolean;
+
 }
 
 const loadShips = () => {
@@ -18,13 +21,30 @@ const initialState: StarshipsState = {
     ships: loadShips(),
     loading: false,
     error: null,
-    currentApiPage: 1
+    currentApiPage: 1,
+    selectedShip: null,
+    selectedShipLoading: false
 };
 
 export const fetchStarships = createAsyncThunk(
-    'starships/fetchStarships',
+    "starships/fetchStarships",
     async (page: number) => {
         return await getShips(page);
+    }
+);
+
+export const fetchShipById = createAsyncThunk(
+    "starships/fetchShipById",
+    async (id: number, { getState }) => {
+        const state = getState() as { starships: StarshipsState };
+        const cachedShip = state.starships.ships.find(ship => ship.id === String(id));
+        if (cachedShip) {
+            console.log("en cache")
+            return cachedShip;
+        } else {
+            console.log("fetching")
+            return await getShipById(id)
+        };
     }
 );
 
@@ -53,7 +73,18 @@ const starshipsSlice = createSlice({
             .addCase(fetchStarships.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || "Error";
-            });
+            })
+            .addCase(fetchShipById.pending, (state) => {
+                state.selectedShipLoading = true;
+            })
+            .addCase(fetchShipById.fulfilled, (state, action) => {
+                state.selectedShipLoading = false;
+                state.selectedShip = action.payload;
+            })
+            .addCase(fetchShipById.rejected, (state, action) => {
+                state.selectedShipLoading = false;
+                state.error = action.error.message || "Error";
+            })
     },
 });
 
