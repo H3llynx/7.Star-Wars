@@ -49,6 +49,11 @@
 
     button {
         align-self: flex-end;
+        flex-shrink: 0;
+    }
+
+    p.scan-terminal {
+        align-self: flex-start;
     }
 }
 

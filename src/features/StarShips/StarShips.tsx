@@ -1,37 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Hud from "../../assets/svg/hud-border.svg?react";
+import { Loading } from "../../components/Loading/Loading";
+import { LoadMoreBtn } from "../../components/LoadMoreBtn/LoadMoreBtn";
 import { SectionIntro } from "../../components/SectionIntro/SectionIntro";
-import { getShips } from "./api/starships-service";
-import { LoadMoreBtn } from "./components/LoadMoreBtn/LoadMoreBtn";
 import { ShipCard } from "./components/ShipCard/ShipCard";
 import "./StarShips.css";
-import type { StarShip } from "./types/types";
+import { fetchStarships, setPage } from "./StarShipsSlice";
 
 export function StarShips() {
-    const [ships, setShips] = useState<StarShip[]>([]);
-    const [pages, setPages] = useState(1);
+    const dispatch = useAppDispatch();
+    const { ships, loading, currentApiPage, error } = useAppSelector(
+        (state) => state.starships
+    );
 
     useEffect(() => {
-        const loadShips = async () => {
-            const stored = localStorage.getItem("starships");
-            if (stored && stored !== "undefined") {
-                setShips(JSON.parse(stored));
-            }
-            else {
-                const ships = await getShips(1);
-                setShips(ships);
-                localStorage.setItem("starships", JSON.stringify(ships));
-            }
+        if (ships.length === 0) {
+            dispatch(fetchStarships(currentApiPage));
         }
-        loadShips();
     }, []);
 
-    const loadMoreShips = async () => {
-        const moreShips = await getShips(pages + 1);
-        const newShips = [...ships, ...moreShips];
-        setShips(newShips);
-        setPages(pages + 1);
-    }
+    const handleNextPage = () => {
+        const nextPage = currentApiPage + 1
+        dispatch(setPage(nextPage));
+        dispatch(fetchStarships(nextPage))
+    };
+
 
     return (
         <div className="centered">
@@ -39,6 +33,10 @@ export function StarShips() {
             <section className="hud">
                 <Hud className="hud-border-svg mb-hidden" />
                 <div className="ship-list">
+                    {loading === true &&
+                        <Loading />
+                    }
+                    {error && <img src="jarjar.png" className="error-img" alt="Error: data not found" />}
                     <ul>
                         {ships.map(ship => {
                             return (
@@ -49,10 +47,13 @@ export function StarShips() {
                             )
                         })}
                     </ul>
-                    {pages < 4 && <LoadMoreBtn
-                        item="starships"
-                        onClick={loadMoreShips}
-                    />}
+                    {loading === false
+                        && currentApiPage < 4
+                        && <LoadMoreBtn
+                            item="starships"
+                            onClick={handleNextPage}
+                        />
+                    }
                 </div>
             </section>
         </div>

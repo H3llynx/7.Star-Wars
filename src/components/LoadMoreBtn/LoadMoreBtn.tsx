@@ -1,10 +1,10 @@
-import type { LoadMoreBtnProps } from "../../types/types";
+import type { LoadMoreBtnProps } from "../../features/StarShips/types/types";
 import "./LoadMoreBtn.css";
 
 export function LoadMoreBtn({ item, onClick }: LoadMoreBtnProps) {
     return (
         <button
-            className="load-more-btn"
+            className="load-more-btn scan-terminal"
             tabIndex={0}
             onClick={onClick}
         >

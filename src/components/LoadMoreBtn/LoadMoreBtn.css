@@ -1,0 +1,23 @@
+@keyframes shadow-pulse-small {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 1px var(--color-blue-neon-rgba)) drop-shadow(0 0 2px var(--color-blue-neon-rgba-2));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 2px rgba(143, 220, 255, 0.7)) drop-shadow(0 0 4px var(--color-blue-neon-rgba)) drop-shadow(0 0 5px var(--color-blue-neon-rgba-2));
+    }
+}
+
+.load-more-btn {
+    background: none;
+    border: none;
+
+    &:hover,
+    &:focus-visible {
+        color: var(--color-light);
+        text-shadow: 0 0 10px var(--color-blue-neon-rgba);
+        animation: shadow-pulse-small 1.5s ease-in-out infinite;
+    }
+}
