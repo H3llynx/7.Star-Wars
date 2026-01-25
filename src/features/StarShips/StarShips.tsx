@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import Hud from "../../assets/svg/hud-border.svg?react";
+import { HudSection } from "../../components/HudSection/HudSection";
 import { Loading } from "../../components/Loading/Loading";
 import { LoadMoreBtn } from "../../components/LoadMoreBtn/LoadMoreBtn";
-import { SectionIntro } from "../../components/SectionIntro/SectionIntro";
 import { ShipCard } from "./components/ShipCard/ShipCard";
 import "./StarShips.css";
 import { fetchStarships, setPage } from "./StarShipsSlice";
@@ -28,34 +27,35 @@ export function StarShips() {
 
 
     return (
-        <div className="centered">
-            <SectionIntro title="Starship catalog" />
-            <section className="hud">
-                <Hud className="hud-border-svg mb-hidden" />
-                <div className="ship-list">
-                    {loading === true &&
-                        <Loading />
-                    }
-                    {error && <img src="jarjar.png" className="error-img" alt="Error: data not found" />}
-                    <ul>
-                        {ships.map(ship => {
-                            return (
-                                <li key={ship.id}>
-                                    <ShipCard
-                                        {...ship} />
-                                </li>
-                            )
-                        })}
-                    </ul>
-                    {loading === false
-                        && currentApiPage < 4
-                        && <LoadMoreBtn
-                            item="starships"
-                            onClick={handleNextPage}
-                        />
-                    }
-                </div>
-            </section>
-        </div>
+        <HudSection title="Starship catalog">
+            <div className="ship-list">
+                {loading === true &&
+                    <Loading />
+                }
+                {error && <img
+                    src="jarjar.png"
+                    className="error-img"
+                    alt="Error: data not found"
+                />
+                }
+                <ul>
+                    {ships.map(ship => {
+                        return (
+                            <li key={ship.id}>
+                                <ShipCard
+                                    {...ship} />
+                            </li>
+                        )
+                    })}
+                </ul>
+                {loading === false
+                    && currentApiPage < 4
+                    && <LoadMoreBtn
+                        item="starships"
+                        onClick={handleNextPage}
+                    />
+                }
+            </div>
+        </HudSection>
     )
 }
