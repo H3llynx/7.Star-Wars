@@ -1,0 +1,6 @@
+.error-img {
+    height: 100%;
+    padding: 2rem 0;
+    max-width: 100%;
+    object-fit: contain;
+}
