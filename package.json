@@ -44,6 +44,7 @@
     "jsdom": "^27.4.0",
     "playwright": "^1.58.0",
     "storybook": "^10.2.0",
+    "storybook-addon-remix-react-router": "^6.0.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2",

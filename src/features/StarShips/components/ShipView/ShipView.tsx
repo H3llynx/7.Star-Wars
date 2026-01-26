@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, useParams } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import { HudError } from '../../../../components/HudError/HudError';
+import { ErrorImg } from '../../../../components/ErrorImg/ErrorImg';
 import { HudSection } from '../../../../components/HudSection/HudSection';
 import { Loading } from '../../../../components/Loading/Loading';
 import { fetchShipById } from '../../StarShipsSlice';
@@ -23,25 +23,21 @@ export function ShipView() {
         };
     }, [ship, dispatch, shipId])
 
-    if (selectedShipLoading) {
-        return <Loading />;
-    }
 
-    if (error) {
-        return (
-            <HudError />
-        );
-    }
-
-    if (!ship) {
-        return <Loading />;
+    let title: string = "";
+    if (ship) {
+        title = ship.name
+    } else if (error) {
+        title = "Ooops... this is akward"
     }
 
     return (
-        <HudSection title={ship.name}>
-            <article>
-
-            </article>
+        <HudSection title={title}>
+            {selectedShipLoading && <Loading />}
+            {error && <ErrorImg />}
+            {!error && !selectedShipLoading &&
+                <article><p>Ceci est un test: {ship.name}</p></article>
+            }
         </HudSection>
     )
 }

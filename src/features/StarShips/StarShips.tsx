@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { ErrorImg } from "../../components/ErrorImg/ErrorImg";
 import { HudSection } from "../../components/HudSection/HudSection";
 import { Loading } from "../../components/Loading/Loading";
 import { LoadMoreBtn } from "../../components/LoadMoreBtn/LoadMoreBtn";
@@ -25,37 +26,29 @@ export function StarShips() {
         dispatch(fetchStarships(nextPage))
     };
 
-
     return (
         <HudSection title="Starship catalog">
-            <div className="ship-list">
-                {loading === true &&
-                    <Loading />
-                }
-                {error && <img
-                    src="jarjar.png"
-                    className="error-img"
-                    alt="Error: data not found"
-                />
-                }
-                <ul>
-                    {ships.map(ship => {
-                        return (
-                            <li key={ship.id}>
-                                <ShipCard
-                                    {...ship} />
-                            </li>
-                        )
-                    })}
-                </ul>
-                {loading === false
-                    && currentApiPage < 4
-                    && <LoadMoreBtn
-                        item="starships"
-                        onClick={handleNextPage}
-                    />
-                }
-            </div>
+            {loading && <Loading />}
+            {error && <ErrorImg />}
+            {!error && !loading &&
+                <div className="ship-list">
+                    <ul>
+                        {ships.map(ship => {
+                            return (
+                                <li key={ship.id}>
+                                    <ShipCard
+                                        {...ship} />
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    {currentApiPage < 4 &&
+                        <LoadMoreBtn
+                            item="starships"
+                            onClick={handleNextPage}
+                        />}
+                </div>
+            }
         </HudSection>
     )
 }

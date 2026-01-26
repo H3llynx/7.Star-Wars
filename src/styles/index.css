@@ -116,6 +116,8 @@ section {
   background: var(--color-dark-rgba) var(--neon-gradient-rgba);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
+  display: flex;
+  flex-direction: column;
 }
 
 .neon-block {
@@ -161,14 +163,6 @@ h4 {
   font-family: var(--font-black-ops);
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
-}
-
-.error-img {
-  display: block;
-  margin: auto;
-  height: 100%;
-  max-width: 100%;
-  padding: 2rem;
 }
 
 .scan-terminal {

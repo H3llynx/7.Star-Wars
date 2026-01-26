@@ -1,19 +1,17 @@
 import type { Decorator, Preview } from '@storybook/react-vite';
 import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router';
+import { withRouter } from 'storybook-addon-remix-react-router';
 import { store } from "../src/app/store";
 import "../src/styles/index.css";
 
 const withProviders: Decorator = (Story) => (
-  <MemoryRouter>
-    <Provider store={store}>
-      {Story()}
-    </Provider>
-  </MemoryRouter>
+  <Provider store={store}>
+    {Story()}
+  </Provider>
 );
 
 const preview: Preview = {
-  decorators: [withProviders],
+  decorators: [withProviders, withRouter],
   parameters: {
     controls: {
       matchers: {

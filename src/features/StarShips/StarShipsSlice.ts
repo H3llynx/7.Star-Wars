@@ -39,10 +39,8 @@ export const fetchShipById = createAsyncThunk(
         const state = getState() as { starships: StarshipsState };
         const cachedShip = state.starships.ships.find(ship => ship.id === String(id));
         if (cachedShip) {
-            console.log("en cache")
             return cachedShip;
         } else {
-            console.log("fetching")
             return await getShipById(id)
         };
     }
@@ -54,7 +52,7 @@ const starshipsSlice = createSlice({
     reducers: {
         setPage: (state, action) => {
             state.currentApiPage = action.payload;
-        }
+        },
     },
     extraReducers: (builder) => {
         builder
