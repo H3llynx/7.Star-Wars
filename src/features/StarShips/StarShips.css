@@ -28,7 +28,6 @@
 .ship-list {
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
     padding: 3rem 2rem 2rem 2rem;
     display: flex;
     flex-direction: column;
@@ -57,33 +56,6 @@
     }
 }
 
-.ship-list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.ship-list::-webkit-scrollbar-track {
-    background: rgba(10, 25, 40, 0.3);
-    margin: 10px 0;
-}
-
-.ship-list::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg,
-            rgba(180, 240, 255, 0.9),
-            rgba(90, 190, 255, 0.8));
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 0 6px rgba(120, 220, 255, 0.6),
-        inset 0 0 4px rgba(255, 255, 255, 0.25);
-}
-
-.ship-list::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg,
-            rgba(210, 255, 255, 1),
-            rgba(120, 220, 255, 0.95));
-}
-
 @media (orientation: portrait) {
 
     .hud::after,
@@ -96,12 +68,8 @@
         background: none;
     }
 
-    .ship-list {
-        overflow: auto;
-
-        ul {
-            grid-template-columns: minmax(0, 1fr);
-        }
+    .ship-list ul {
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 

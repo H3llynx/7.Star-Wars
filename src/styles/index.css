@@ -6,6 +6,7 @@
   --font-black-ops: "Black Ops One", system-ui;
   --color-dark: rgb(30, 30, 30);
   --color-light: rgb(220, 240, 255);
+  --color-text-label: rgba(160, 210, 255, 0.55);
   --color-blue-neon-rgba: rgba(143, 220, 255, 0.6);
   --color-blue-neon-rgba-2: rgba(143, 220, 255, 0.35);
   --color-dark-rgba: rgba(0, 0, 0, 0.85);
@@ -126,7 +127,8 @@ section {
 
 .neon-text,
 h1,
-h3 {
+h3,
+h4 {
   background: var(--neon-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -153,6 +155,7 @@ h2 {
   padding-bottom: 0.4rem;
   margin: 0.8rem 0;
 }
+
 
 h3 {
   font-size: clamp(0.7rem, 1.2vw, 1rem);
@@ -211,6 +214,37 @@ h4 {
   }
 }
 
+.scroll {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(10, 25, 40, 0.3);
+    margin: 10px 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg,
+        rgba(180, 240, 255, 0.9),
+        rgba(90, 190, 255, 0.8));
+
+    border-radius: 8px;
+
+    box-shadow:
+      0 0 6px rgba(120, 220, 255, 0.6),
+      inset 0 0 4px rgba(255, 255, 255, 0.25);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg,
+        rgba(210, 255, 255, 1),
+        rgba(120, 220, 255, 0.95));
+  }
+}
+
 @media (min-width: 1024px) {
   :root {
     --full-width: 70vw;
@@ -244,5 +278,9 @@ h4 {
 
   .mb-hidden {
     display: none;
+  }
+
+  .scroll {
+    overflow: auto;
   }
 }

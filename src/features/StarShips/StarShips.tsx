@@ -31,7 +31,7 @@ export function StarShips() {
             {loading && <Loading />}
             {error && <ErrorImg />}
             {!error && !loading &&
-                <div className="ship-list">
+                <div className="ship-list scroll">
                     <ul>
                         {ships.map(ship => {
                             return (

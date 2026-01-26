@@ -5,6 +5,7 @@ import { ErrorImg } from '../../../../components/ErrorImg/ErrorImg';
 import { HudSection } from '../../../../components/HudSection/HudSection';
 import { Loading } from '../../../../components/Loading/Loading';
 import { fetchShipById } from '../../StarShipsSlice';
+import "./ShipView.css";
 
 export function ShipView() {
     const dispatch = useAppDispatch();
@@ -35,8 +36,64 @@ export function ShipView() {
         <HudSection title={title}>
             {selectedShipLoading && <Loading />}
             {error && <ErrorImg />}
-            {!error && !selectedShipLoading &&
-                <article><p>Ceci est un test: {ship.name}</p></article>
+            {!error &&
+                <article>
+                    <img src={ship.src} className="hologram" />
+                    <div className="ship-info scroll">
+                        <h1>{ship.name}</h1>
+                        <p className="ship-subtitle">{ship.manufacturer}</p>
+
+                        <div className="hud-section">
+                            <h2>IDENTITY</h2>
+                            <div className="hud-grid">
+                                <div className="row">
+                                    <span className="label">Model</span>
+                                    <span className="value">{ship.model}</span>
+                                </div>
+                                <div className="row">
+                                    <span className="label">Class</span>
+                                    <span className="value">{ship.starship_class}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="hud-section">
+                            <h2>PERFORMANCE</h2>
+                            <div className="hud-grid-3">
+                                <div className="col">
+                                    <span className="label">Atmospheric Speed</span>
+                                    <span className="value">{ship.max_atmosphering_speed}</span>
+                                </div>
+                                <div className="col">
+                                    <span className="label">Hyperdrive</span>
+                                    <span className="value">{ship.hyperdrive_rating}</span>
+                                </div>
+                                <div className="col">
+                                    <span className="label">MGLT</span>
+                                    <span className="value">{ship.MGLT}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="hud-section">
+                            <h2>CAPACITY</h2>
+                            <div className="hud-grid-3">
+                                <div className="col">
+                                    <span className="label">Crew</span>
+                                    <span className="value">{ship.crew}</span>
+                                </div>
+                                <div className="col">
+                                    <span className="label">Passengers</span>
+                                    <span className="value">{ship.passengers}</span>
+                                </div>
+                                <div className="col">
+                                    <span className="label">Cargo capacity</span>
+                                    <span className="value">{ship.cargo_capacity}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             }
         </HudSection>
     )

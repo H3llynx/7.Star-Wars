@@ -14,7 +14,7 @@ export const Default: Story = {
     args: {},
 };
 
-export const WithError: Story = {
+export const Error: Story = {
     render: () => {
         localStorage.removeItem("starships");
         store.dispatch({
@@ -29,7 +29,6 @@ export const Loading: Story = {
     render: () => {
         store.dispatch({
             type: 'starships/fetchStarships/pending',
-            loading: true
         });
         return <StarShips />;
     },
