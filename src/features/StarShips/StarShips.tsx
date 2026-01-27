@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { Button } from "../../components/Button/Button";
 import { ErrorImg } from "../../components/ErrorImg/ErrorImg";
 import { HudSection } from "../../components/HudSection/HudSection";
 import { Loading } from "../../components/Loading/Loading";
-import { LoadMoreBtn } from "../../components/LoadMoreBtn/LoadMoreBtn";
 import { ShipCard } from "./components/ShipCard/ShipCard";
 import "./StarShips.css";
 import { fetchStarships, setPage } from "./StarShipsSlice";
@@ -43,10 +43,10 @@ export function StarShips() {
                         })}
                     </ul>
                     {currentApiPage < 4 &&
-                        <LoadMoreBtn
-                            item="starships"
-                            onClick={handleNextPage}
-                        />}
+                        <Button
+                            onClick={handleNextPage}>
+                            Load more starships
+                        </Button>}
                 </div>
             }
         </HudSection>

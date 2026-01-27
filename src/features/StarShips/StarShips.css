@@ -49,6 +49,7 @@
     button {
         align-self: flex-end;
         flex-shrink: 0;
+        cursor: pointer;
     }
 
     p.scan-terminal {

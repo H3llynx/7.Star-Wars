@@ -92,9 +92,11 @@ export function ShipView() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </article>
             }
         </HudSection>
     )
 }
+

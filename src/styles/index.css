@@ -32,7 +32,7 @@
   --hud-gradient: linear-gradient(135deg,
       rgba(10, 25, 40, 0.58),
       rgba(5, 15, 25, 0.92));
-  --overlay: linear-gradient(180deg,
+  --overlay: linear-gradient(150deg,
       rgba(0, 0, 0, 0.6),
       transparent);
   --full-width: 80vw;
@@ -62,12 +62,28 @@
   }
 }
 
+@keyframes shadow-pulse-small {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 1px var(--color-blue-neon-rgba)) drop-shadow(0 0 2px var(--color-blue-neon-rgba-2));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 2px rgba(143, 220, 255, 0.7)) drop-shadow(0 0 4px var(--color-blue-neon-rgba)) drop-shadow(0 0 5px var(--color-blue-neon-rgba-2));
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-weight: normal;
   transition: 0.6s;
+
+  &:focus-visible {
+    outline: none;
+  }
 
 }
 
@@ -111,8 +127,7 @@ section {
   margin: auto 0;
 }
 
-.hud,
-.neon-block {
+.hud {
   clip-path: var(--hud-clip);
   background: var(--color-dark-rgba) var(--neon-gradient-rgba);
   backdrop-filter: blur(1px);
@@ -135,7 +150,6 @@ h4 {
   -webkit-text-fill-color: transparent;
 }
 
-h1,
 h3 {
   font-family: var(--font-orbitron);
   filter:
@@ -143,8 +157,12 @@ h3 {
 }
 
 h1 {
-  font-size: 1.6rem;
+  text-transform: uppercase;
   margin-bottom: 1.8rem;
+  font-family: var(--font-orbitron);
+  font-size: clamp(0.75rem, 1.2vw, 1.2rem);
+  letter-spacing: 0.25em;
+  text-shadow: 0 0 10px rgba(140, 220, 255, 0.5);
 }
 
 h2 {
@@ -168,11 +186,9 @@ h4 {
   margin-bottom: 0.5rem;
 }
 
-.scan-terminal {
+.terminal {
   position: relative;
   z-index: 2;
-  background: none;
-  border: none;
   padding: 0.8rem 0.2rem;
   color: var(--color-blue-neon);
   font-family: var(--font-orbitron);
@@ -181,44 +197,38 @@ h4 {
   letter-spacing: 0.12em;
   display: flex;
   gap: 0.5rem;
-  transition: all 0.5s ease;
-  cursor: pointer;
   overflow: hidden;
   align-items: center;
+}
 
-  &:focus-visible {
-    outline: none;
-  }
+.scan::after {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      var(--color-blue-neon),
+      transparent);
+  animation: scan 2.5s ease-in-out infinite;
+}
 
-  &::after {
-    content: " ";
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--color-blue-neon),
-        transparent);
-    animation: scan 2.5s ease-in-out infinite;
-  }
+.terminal-prompt {
+  opacity: 0.4;
+  font-weight: 700;
+  transition: opacity 0.3s ease;
+}
 
-  .terminal-prompt {
-    opacity: 0.4;
-    font-weight: 700;
-    transition: opacity 0.3s ease;
-  }
-
-  .terminal-cursor {
-    animation: blink 1s step-end infinite;
-  }
+.terminal-cursor {
+  animation: blink 1s step-end infinite;
 }
 
 .scroll {
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   &::-webkit-scrollbar-track {

@@ -7,7 +7,3 @@ export type StarShip = {
     src: string;
     manufacturer?: string;
 }
-
-export type LoadMoreBtnProps = {
-    item: string;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
