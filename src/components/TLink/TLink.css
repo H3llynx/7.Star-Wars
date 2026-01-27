@@ -1,0 +1,11 @@
+.link {
+    text-decoration: none;
+    animation: shadow-pulse-small 1.5s ease-in-out infinite;
+
+    &:hover,
+    &:focus-visible {
+        text-shadow: 0 0 10px var(--color-blue-neon-rgba);
+        transform: scale(1.1);
+        transform-origin: left;
+    }
+}
