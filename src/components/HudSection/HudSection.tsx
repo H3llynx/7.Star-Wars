@@ -7,7 +7,7 @@ export function HudSection({ title, children }: { title: string, children: React
         <div className="centered">
             <SectionIntro title={title} />
             <section className="hud">
-                <Hud className="hud-border-svg mb-hidden" />
+                <Hud className="hud-border-svg mb-hidden" aria-hidden="true" />
                 {children}
             </section>
         </div>

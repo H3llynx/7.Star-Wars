@@ -12,6 +12,7 @@
   --color-dark-rgba: rgba(0, 0, 0, 0.85);
   --color-dark-rgba-2: rgba(10, 25, 30, 0.8);
   --color-blue-neon: rgb(143, 220, 255);
+  --color-red: #ff2b2b;
   --neon-gradient: linear-gradient(90deg,
       rgb(200, 243, 255),
       rgb(143, 220, 255),
@@ -187,7 +188,6 @@ h4 {
 }
 
 .terminal {
-  position: relative;
   z-index: 2;
   padding: 0.8rem 0.2rem;
   color: var(--color-blue-neon);
@@ -197,21 +197,26 @@ h4 {
   letter-spacing: 0.12em;
   display: flex;
   gap: 0.5rem;
-  overflow: hidden;
   align-items: center;
 }
 
-.scan::after {
-  content: " ";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg,
-      transparent,
-      var(--color-blue-neon),
-      transparent);
-  animation: scan 2.5s ease-in-out infinite;
+.scan {
+  position: relative;
+  padding: 0.8rem 0.2rem;
+  overflow: hidden;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--color-blue-neon),
+        transparent);
+    animation: scan 2.5s ease-in-out infinite;
+  }
 }
 
 .terminal-prompt {

@@ -2,7 +2,7 @@ import "./HudOverlay.css";
 
 export function HudOverlay() {
     return (
-        <div className="hud-overlay mb-hidden">
+        <div className="hud-overlay mb-hidden" aria-hidden="true">
             <div className="hud-top">
                 <span>HUD FRAME · A7</span>
                 <span>SYSTEM · NOMINAL</span>

@@ -1,0 +1,55 @@
+ @keyframes sithPulse {
+
+     0%,
+     100% {
+         text-shadow: 0 0 4px #ff2b2b, 0 0 8px #ff2b2b;
+     }
+
+     50% {
+         text-shadow: 0 0 8px #ff2b2b, 0 0 16px red;
+     }
+ }
+
+ label {
+     display: flex;
+     gap: 0.5rem;
+     opacity: 0.9;
+     position: relative;
+     width: min(500px, 100%);
+
+     .terminal-prompt {
+         opacity: 0.8;
+     }
+
+     &:has(:user-invalid) {
+         color: var(--color-red);
+         animation: sithPulse 1.5s infinite;
+
+         .invalid-svg {
+             visibility: visible;
+         }
+     }
+ }
+
+ input {
+     border: 0;
+     background: none;
+     padding: 0.2rem;
+     color: var(--color-light);
+     text-transform: uppercase;
+     font-size: clamp(0.55rem, 0.9vw, 0.75rem);
+     letter-spacing: 0.15em;
+
+     &:user-invalid {
+         color: var(--color-red);
+     }
+ }
+
+ .invalid-svg {
+     visibility: hidden;
+     position: absolute;
+     right: 10px;
+     top: 50%;
+     transform: translateY(-50%);
+     width: 30px;
+ }

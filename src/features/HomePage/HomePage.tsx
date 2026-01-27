@@ -31,7 +31,7 @@ export function HomePage() {
                     </p>
                 </div>
                 <div className="droid-hologram">
-                    <img src={Hologram} alt="" />
+                    <img src={Hologram} alt="Astromech droid hologram" />
                 </div>
             </section>
         </>
