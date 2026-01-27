@@ -30,7 +30,9 @@ export function HomePage() {
                         SELECT A STARSHIP TO ACCESS ITS TACTICAL RECORD
                     </p>
                 </div>
-                <img src={Hologram} alt="" />
+                <div className="droid-hologram">
+                    <img src={Hologram} alt="" />
+                </div>
             </section>
         </>
     )

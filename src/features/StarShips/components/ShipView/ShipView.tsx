@@ -38,7 +38,7 @@ export function ShipView() {
             {error && <ErrorImg />}
             {!error &&
                 <article>
-                    <img src={ship.src} className="hologram" />
+                    <img src={ship.src} className="ship-hologram" />
                     <div className="ship-info scroll">
                         <h1>{ship.name}</h1>
                         <p className="ship-subtitle">{ship.manufacturer}</p>

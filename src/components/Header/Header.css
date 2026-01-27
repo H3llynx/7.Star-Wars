@@ -29,6 +29,7 @@ header {
     justify-content: center;
     position: relative;
     z-index: 2;
+    filter: drop-shadow(0 0 6px rgba(255, 232, 31, 0.25));
 }
 
 h1 {
@@ -44,6 +45,7 @@ h1 {
     width: auto;
     height: 100%;
     filter: drop-shadow(0 0 8px var(--color-dark));
+    color: rgba(255, 232, 31, 0.85);
 }
 
 nav {

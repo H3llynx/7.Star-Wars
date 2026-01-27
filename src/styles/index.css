@@ -36,7 +36,7 @@
       rgba(0, 0, 0, 0.6),
       transparent);
   --full-width: 80vw;
-  background-color: var(--color-dark);
+  background-color: #0a0a0c;
 }
 
 @keyframes scan {
