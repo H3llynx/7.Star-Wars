@@ -1,0 +1,28 @@
+.terminal-cta {
+    padding: 0.8rem 0.2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 0;
+    color: var(--color-light);
+    font-family: var(--font-orbitron);
+    font-size: clamp(0.45rem, 0.9vw, 0.65rem);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    &:hover,
+    &:focus-visible {
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--color-dark);
+        box-shadow:
+            0 0 25px var(--color-blue-neon-rgba-2),
+            inset 0 0 20px rgba(0, 255, 255, 0.1);
+        transform: translateY(-1px);
+    }
+
+    .terminal-prompt {
+        opacity: 0.6;
+    }
+}

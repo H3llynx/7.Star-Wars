@@ -17,6 +17,10 @@
      position: relative;
      width: min(500px, 100%);
 
+     .form-label {
+         font-size: clamp(0.45rem, 0.9vw, 0.65rem);
+     }
+
      .terminal-prompt {
          opacity: 0.8;
      }

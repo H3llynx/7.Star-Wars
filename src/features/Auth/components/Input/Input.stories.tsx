@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Hud from "../../assets/svg/hud-border.svg?react";
+import Hud from "../../../../assets/svg/hud-border.svg?react";
 import { Input } from "./Input";
 
 const meta: Meta<typeof Input> = {

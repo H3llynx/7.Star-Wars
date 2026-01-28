@@ -21,7 +21,7 @@ export function HomePage() {
                         and operational capacity.
                     </p>
                     <TLink to="starships">
-                        Access starship database
+                        Access database
                     </TLink>
                     <p className="terminal-status">
                         SYSTEM STATUS<br />

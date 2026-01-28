@@ -1,5 +1,5 @@
 import React from "react";
-import Error from "../../assets/svg/error.svg?react";
+import Error from "../../../../assets/svg/error.svg?react";
 import "./input.css";
 
 type Input = {
@@ -11,7 +11,7 @@ export function Input({ id, label, type, value }: Input) {
     return (
         <label htmlFor={id} className="terminal">
             <span className="terminal-prompt" aria-hidden="true">&gt;_</span>
-            {label}:
+            <span className="form-label">{label}:</span>
             <input
                 id={id}
                 type={type}

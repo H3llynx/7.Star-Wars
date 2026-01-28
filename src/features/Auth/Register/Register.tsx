@@ -1,14 +1,20 @@
-import Hud from "../../assets/svg/hud-border.svg?react";
-import { Input } from "../../components/Input/Input";
-import "./Login.css";
+import Hud from "../../../assets/svg/hud-border.svg?react";
+import { FormButton } from "../components/FormButton/FormButton";
+import { Input } from "../components/Input/Input";
+import "../styles/auth.css";
 
-export function Login() {
+export function Register() {
     return (
         <div className="centered">
             <section className="hud">
                 <Hud className="hud-border-svg mb-hidden" aria-hidden="true" />
                 <form>
-                    <h1 className="scan">Login</h1>
+                    <h1 className="scan">Register</h1>
+                    <Input
+                        id="name"
+                        type="text"
+                        label="name"
+                    />
                     <Input
                         id="email"
                         type="email"
@@ -19,6 +25,9 @@ export function Login() {
                         type="password"
                         label="password"
                     />
+                    <FormButton>
+                        Register
+                    </FormButton>
                 </form>
             </section>
         </div>
