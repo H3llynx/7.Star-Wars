@@ -10,7 +10,6 @@ export function FormButton({ children }: { children: ReactNode }) {
         >
             <span className="terminal-prompt" aria-hidden="true">&gt;_</span>
             {children}
-            <span className="terminal-cursor" aria-hidden="true">|</span>
         </button>
     )
 }

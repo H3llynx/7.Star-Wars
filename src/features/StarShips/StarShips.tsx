@@ -11,7 +11,7 @@ import { fetchStarships, setPage } from "./StarShipsSlice";
 export function StarShips() {
     const dispatch = useAppDispatch();
     const { ships, loading, currentApiPage, error } = useAppSelector(
-        (state) => state.starships
+        state => state.starships
     );
 
     useEffect(() => {

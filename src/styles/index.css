@@ -12,7 +12,8 @@
   --color-dark-rgba: rgba(0, 0, 0, 0.85);
   --color-dark-rgba-2: rgba(10, 25, 30, 0.8);
   --color-blue-neon: rgb(143, 220, 255);
-  --color-red: #ff2b2b;
+  --color-red: rgb(255, 43, 43);
+  --color-red-rgba: rgba(255, 43, 43, 0.8);
   --neon-gradient: linear-gradient(90deg,
       rgb(200, 243, 255),
       rgb(143, 220, 255),
@@ -75,6 +76,18 @@
   }
 }
 
+@keyframes sith-pulse-text {
+
+  0%,
+  100% {
+    text-shadow: 0 0 4px var(--color-red), 0 0 8px var(--color-red);
+  }
+
+  50% {
+    text-shadow: 0 0 8px var(--color-red), 0 0 16px var(--color-red);
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -106,6 +119,10 @@ body {
     top: 0;
     left: 0;
   }
+}
+
+button {
+  cursor: pointer;
 }
 
 .hud-border-svg {
@@ -188,7 +205,7 @@ h4 {
 }
 
 .terminal {
-  padding: 0.8rem 0.2rem;
+  padding: 0.6rem 0.4rem;
   color: var(--color-blue-neon);
   font-family: var(--font-orbitron);
   font-size: clamp(0.45rem, 0.9vw, 0.65rem);

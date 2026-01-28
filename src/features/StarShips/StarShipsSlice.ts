@@ -58,9 +58,11 @@ const starshipsSlice = createSlice({
         builder
             .addCase(fetchStarships.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(fetchStarships.fulfilled, (state, action) => {
                 state.loading = false;
+                state.error = null;
                 if (state.currentApiPage === 1) {
                     state.ships = action.payload;
                     localStorage.setItem("starships", JSON.stringify(action.payload));
@@ -74,13 +76,16 @@ const starshipsSlice = createSlice({
             })
             .addCase(fetchShipById.pending, (state) => {
                 state.selectedShipLoading = true;
+                state.error = null;
             })
             .addCase(fetchShipById.fulfilled, (state, action) => {
                 state.selectedShipLoading = false;
                 state.selectedShip = action.payload;
+                state.error = null;
             })
             .addCase(fetchShipById.rejected, (state, action) => {
                 state.selectedShipLoading = false;
+                state.selectedShip = null;
                 state.error = action.error.message || "Error";
             })
     },
