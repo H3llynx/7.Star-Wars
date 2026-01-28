@@ -1,4 +1,4 @@
-@keyframes navBorder {
+@keyframes nav-border {
     from {
         opacity: 0;
         width: 0;
@@ -63,7 +63,7 @@ nav {
     text-transform: uppercase;
     font-weight: 500;
     text-decoration: none;
-    cursor: pointer;
+
     filter:
         drop-shadow(0 0 4px var(--color-dark));
 
@@ -91,7 +91,7 @@ nav {
         position: absolute;
         left: 0;
         bottom: 0;
-        animation: navBorder 0.8s forwards;
+        animation: nav-border 0.8s forwards;
     }
 
     &:not(.active) {

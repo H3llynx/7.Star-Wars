@@ -1,0 +1,72 @@
+@keyframes sith-pulse-svg {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 4px var(--color-red-rgba)) drop-shadow(0 0 8px var(--color-red-rgba));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 8px var(--color-red-rgba)) drop-shadow(0 0 16px var(--color-red-rgba));
+    }
+}
+
+@keyframes dialog-flicker {
+
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+
+    92% {
+        opacity: 0.7;
+    }
+
+    94% {
+        opacity: 0.4;
+    }
+
+    96% {
+        opacity: 0.9;
+    }
+
+    98% {
+        opacity: 0.1;
+    }
+}
+
+dialog {
+    margin: auto;
+    padding: 2rem 3rem;
+    text-align: center;
+    background: var(--color-dark-rgba);
+    position: relative;
+    color: var(--color-red);
+    border: 1px solid var(--color-red-rgba);
+    box-shadow: 0 0 40px var(--color-dark-rgba);
+
+    &::backdrop {
+        background: rgba(0, 0, 0, 0.35);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        background: none;
+        border: 0;
+        font-size: 2rem;
+        color: var(--color-light);
+    }
+
+    svg {
+        animation: sith-pulse-svg 1.5s infinite;
+        display: block;
+        margin: auto;
+    }
+
+    p {
+        font-family: var(--font-orbitron);
+        margin-top: 1rem;
+        animation: sith-pulse-text 1.5s infinite;
+    }
+}

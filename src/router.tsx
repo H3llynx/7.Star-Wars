@@ -1,6 +1,6 @@
 import { createHashRouter } from "react-router";
 import { Layout } from "./components/Layout/Layout";
-import { Register } from "./features/Auth/Register/Register";
+import { Auth } from "./features/Auth/Auth";
 import { HomePage } from "./features/HomePage/HomePage";
 import { StarShips } from "./features/StarShips/StarShips";
 import { ShipView } from "./features/StarShips/components/ShipView/ShipView";
@@ -23,8 +23,8 @@ export const router = createHashRouter([
                 element: <ShipView />
             },
             {
-                path: "register",
-                element: <Register />
+                path: "auth",
+                element: <Auth />
             },
         ]
     }

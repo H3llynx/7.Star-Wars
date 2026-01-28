@@ -1,0 +1,12 @@
+<svg width="120" height="120" viewBox="0 0 120 120"
+    xmlns="http://www.w3.org/2000/svg" className="error-icon">
+    <polygon points="60,18 95,38 95,82 60,102 25,82 25,38" fill="none" stroke="#ff2b2b" strokeWidth="5" opacity="0.8" />
+
+    <polygon points="60,35 80,75 40,75" fill="none" stroke="#ff2b2b" strokeWidth="4" />
+
+    <rect x="58" y="46" width="4" height="16" fill="#ff2b2b" />
+    <circle cx="60" cy="68" r="3" fill="#ff2b2b" />
+
+    <line x1="20" y1="60" x2="35" y2="60" stroke="#ff2b2b" strokeWidth="5" />
+    <line x1="85" y1="60" x2="100" y2="60" stroke="#ff2b2b" strokeWidth="5" />
+</svg>

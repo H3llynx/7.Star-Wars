@@ -1,0 +1,36 @@
+.auth-grid {
+    width: var(--full-width);
+    padding: 3rem;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: min(600px, 100%);
+    padding: 3rem 0;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+
+    button {
+        place-self: end;
+    }
+
+    input::placeholder,
+    label:first-of-type input:focus::placeholder {
+        visibility: hidden
+    }
+
+    label:first-of-type input::placeholder {
+        visibility: visible;
+        font-weight: 900;
+        font-size: 1rem;
+        color: var(--color-light);
+        margin-left: 2px;
+        animation: blink 1s step-end infinite;
+    }
+}
