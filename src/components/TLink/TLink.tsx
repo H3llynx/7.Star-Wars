@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import type { LinkProps } from 'react-router';
 import { Link } from "react-router";
-import "./TLink.css";
 
 type TLink = {
     children: ReactNode;
@@ -11,7 +10,8 @@ export function TLink({ to, children }: TLink) {
     return (
         <Link
             to={to}
-            className="link terminal"
+            className="cta terminal"
+            tabIndex={0}
         >
             <span className="terminal-prompt" aria-hidden="true">&gt;_</span>
             {children}

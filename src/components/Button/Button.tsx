@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import "./Button.css";
 
 type Button = {
     children: ReactNode;
@@ -8,7 +7,7 @@ type Button = {
 export function Button({ children, onClick }: Button) {
     return (
         <button
-            className="btn scan terminal"
+            className="cta terminal"
             tabIndex={0}
             onClick={onClick}
         >

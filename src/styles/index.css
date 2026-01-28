@@ -188,7 +188,6 @@ h4 {
 }
 
 .terminal {
-  z-index: 2;
   padding: 0.8rem 0.2rem;
   color: var(--color-blue-neon);
   font-family: var(--font-orbitron);
@@ -198,6 +197,23 @@ h4 {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+
+.cta {
+  background: none;
+  border: none;
+  text-decoration: none;
+  animation: shadow-pulse-small 1.5s ease-in-out infinite;
+  margin: 0 5px;
+  position: relative;
+  z-index: 2;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-light);
+    text-shadow: 0 0 10px var(--color-blue-neon-rgba);
+    background-color: var(--color-dark-rgba);
+  }
 }
 
 .scan {
