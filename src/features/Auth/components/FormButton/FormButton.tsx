@@ -9,6 +9,7 @@ export function FormButton({ children }: Button) {
         >
             <span className="terminal-prompt" aria-hidden="true">&gt;_</span>
             {children}
+            <span className="button-status" aria-hidden="true">[ READY ]</span>
         </button>
     )
 }

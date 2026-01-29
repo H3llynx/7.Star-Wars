@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import "../../Auth.css";
 import { registerUser } from "../../AuthSlice";
 import { FormButton } from "../FormButton/FormButton";
+import { GoogleButton } from "../GoogleButton/GoogleButton";
 import { Input } from "../Input/Input";
 import { SwitchFormButton } from "../SwitchFormButton/SwitchFormButton";
 
@@ -52,6 +53,7 @@ export function Register({ onClick }: { onClick: () => void }) {
                 <FormButton>
                     Register
                 </FormButton>
+                <GoogleButton />
                 <SwitchFormButton onClick={onClick}>
                     ALREADY REGISTERED?
                 </SwitchFormButton>

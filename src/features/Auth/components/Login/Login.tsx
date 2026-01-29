@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import "../../Auth.css";
-import { loginUser, logWithGoogle } from "../../AuthSlice";
+import { loginUser } from "../../AuthSlice";
 import { FormButton } from "../FormButton/FormButton";
+import { GoogleButton } from "../GoogleButton/GoogleButton";
 import { Input } from "../Input/Input";
 import { SwitchFormButton } from "../SwitchFormButton/SwitchFormButton";
 
@@ -15,10 +16,6 @@ export function Login({ onClick }: { onClick: () => void }) {
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
         dispatch(loginUser({ email, password }));
-    }
-
-    const handleGoogle = async () => {
-        dispatch(logWithGoogle());
     }
 
     useEffect(() => {
@@ -46,14 +43,14 @@ export function Login({ onClick }: { onClick: () => void }) {
                 <div className="button-group">
                     <FormButton
                         type="submit">
-                        Authenticate
+                        Login
                     </FormButton>
+                    <GoogleButton />
                     <SwitchFormButton onClick={onClick}>
-                        No account?
+                        Register
                     </SwitchFormButton>
                 </div>
             </form >
-            <button type="button" onClick={handleGoogle}>Log in with Google</button>
         </>
     )
 }

@@ -1,3 +1,15 @@
+@keyframes blink-status {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
 .auth-container {
     padding: 1rem 0;
     height: 100%;
@@ -32,13 +44,13 @@ form {
 
 .button-group {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     place-self: end;
 }
 
 .auth-cta {
     padding: 0.6rem 0.4rem;
-    border: 0;
     color: var(--color-light);
     font-family: var(--font-orbitron);
     font-size: clamp(0.45rem, 0.9vw, 0.65rem);
@@ -50,14 +62,16 @@ form {
     align-items: center;
 
     &[type="submit"] {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(0, 255, 255, 0.15);
 
         &:hover,
         &:focus-visible {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--color-dark);
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-color: var(--color-blue-neon, #00ffff);
+            color: var(--color-blue-neon, #00ffff);
             box-shadow:
-                0 0 25px var(--color-blue-neon-rgba-2),
+                0 0 25px rgba(0, 255, 255, 0.4),
                 inset 0 0 20px rgba(0, 255, 255, 0.1);
             transform: translateY(-1px);
         }
@@ -75,7 +89,19 @@ form {
             left: 0;
             bottom: 0;
             animation: nav-border 0.8s forwards;
+
         }
+    }
+
+    &:hover .terminal-prompt,
+    &:focus-visible .terminal-prompt {
+        opacity: 1;
+    }
+
+    &:hover .button-status,
+    &:focus-visible .button-status {
+        opacity: 1;
+        animation: blink-status 1.5s ease-in-out infinite;
     }
 
     .terminal-prompt {
@@ -83,9 +109,20 @@ form {
     }
 }
 
+.button-status {
+    margin-left: auto;
+    opacity: 0.5;
+    font-size: 0.75em;
+    color: inherit;
+    font-family: monospace;
+    transition: all 0.3s ease;
+}
+
+
 @media (orientation: portrait) {
     .button-group {
         margin-top: 2rem;
         place-self: center;
+        gap: 1.5rem;
     }
 }
