@@ -4,7 +4,7 @@ import { FirebaseError } from 'firebase/app';
 import type { User } from 'firebase/auth';
 import { signOut } from 'firebase/auth';
 import { firebaseAuth } from '../../firebase';
-import { handleEmailLogin, handleEmailRegister } from "./scripts/auth";
+import { handleEmailLogin, handleEmailRegister, handleGoogleLogin } from "./scripts/auth";
 import type { Auth } from './types/types';
 
 export type FormattedUser = {
@@ -68,6 +68,22 @@ export const loginUser = createAsyncThunk(
     }
 );
 
+export const logWithGoogle = createAsyncThunk(
+    "auth/google",
+    async (_, { rejectWithValue }) => {
+        try {
+            const user = await handleGoogleLogin();
+            const formattedUser = formatUser(user);
+            return formattedUser;
+        } catch (error) {
+            if (error instanceof FirebaseError) {
+                return rejectWithValue(error.code);
+            }
+            return rejectWithValue('auth/unknown-error');
+        }
+    }
+);
+
 export const logoutUser = createAsyncThunk(
     "auth/logout",
     async () => {
@@ -116,6 +132,24 @@ const authSlice = createSlice({
             }
             )
             .addCase(loginUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload as string;
+                state.authenticated = false;
+                state.user = null;
+            })
+            .addCase(logWithGoogle.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            }
+            )
+            .addCase(logWithGoogle.fulfilled, (state, action) => {
+                state.loading = false;
+                state.user = action.payload;
+                state.authenticated = true;
+                state.error = null;
+            }
+            )
+            .addCase(logWithGoogle.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload as string;
                 state.authenticated = false;
