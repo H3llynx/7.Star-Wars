@@ -1,24 +1,19 @@
-.auth-grid {
-    width: var(--full-width);
-    padding: 3rem;
+.auth-container {
+    padding: 1rem 0;
+    height: 100%;
     max-height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: min(600px, 100%);
-    padding: 3rem 0;
-    margin: auto;
+    width: min(600px, 80%);
     position: relative;
     z-index: 2;
-
-    button {
-        place-self: end;
-    }
 
     input::placeholder,
     label:first-of-type input:focus::placeholder {
@@ -32,5 +27,65 @@ form {
         color: var(--color-light);
         margin-left: 2px;
         animation: blink 1s step-end infinite;
+    }
+}
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    place-self: end;
+}
+
+.auth-cta {
+    padding: 0.6rem 0.4rem;
+    border: 0;
+    color: var(--color-light);
+    font-family: var(--font-orbitron);
+    font-size: clamp(0.45rem, 0.9vw, 0.65rem);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    &[type="submit"] {
+        background: rgba(255, 255, 255, 0.2);
+
+        &:hover,
+        &:focus-visible {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--color-dark);
+            box-shadow:
+                0 0 25px var(--color-blue-neon-rgba-2),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+    }
+
+    &[type="button"] {
+        position: relative;
+
+        &:hover::after,
+        &:focus-visible::after {
+            content: " ";
+            height: 2px;
+            background: var(--color-blue-neon);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            animation: nav-border 0.8s forwards;
+        }
+    }
+
+    .terminal-prompt {
+        opacity: 0.6;
+    }
+}
+
+@media (orientation: portrait) {
+    .button-group {
+        margin-top: 2rem;
+        place-self: center;
     }
 }

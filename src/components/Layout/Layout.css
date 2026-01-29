@@ -7,10 +7,3 @@
     align-items: center;
     justify-content: space-between;
 }
-
-@media (orientation: portrait) {
-    .app-container {
-        justify-content: flex-start;
-        gap: 1rem;
-    }
-}

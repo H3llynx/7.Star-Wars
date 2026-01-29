@@ -35,7 +35,7 @@
       rgba(10, 25, 40, 0.58),
       rgba(5, 15, 25, 0.92));
   --overlay: linear-gradient(150deg,
-      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.7),
       transparent);
   --full-width: 80vw;
   background-color: #0a0a0c;
@@ -88,6 +88,18 @@
   }
 }
 
+@keyframes nav-border {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+
+  to {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -123,6 +135,14 @@ body {
 
 button {
   cursor: pointer;
+  background: none;
+  border: 0;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .hud-border-svg {
@@ -139,6 +159,13 @@ header,
 section {
   width: var(--full-width);
   position: relative;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--overlay);
 }
 
 .centered {
@@ -217,9 +244,6 @@ h4 {
 }
 
 .cta {
-  background: none;
-  border: none;
-  text-decoration: none;
   animation: shadow-pulse-small 1.5s ease-in-out infinite;
   margin: 0 5px;
   position: relative;
@@ -293,6 +317,43 @@ h4 {
   }
 }
 
+.auth-area {
+  display: flex;
+  gap: 0.4rem;
+  color: var(--color-blue-neon-rgba);
+  font-size: clamp(0.45rem, 0.9vw, 0.7rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  * {
+    padding: 0.5rem 0;
+  }
+
+  .user-name {
+    color: var(--color-blue-neon);
+  }
+
+  button,
+  a {
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+    color: var(--color-blue-neon);
+    position: relative;
+
+    &:hover::after,
+    &:focus-visible::after {
+      content: " ";
+      height: 2px;
+      background: var(--color-blue-neon);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      animation: nav-border 0.8s forwards;
+    }
+  }
+}
+
 @media (min-width: 1024px) {
   :root {
     --full-width: 70vw;
@@ -329,6 +390,6 @@ h4 {
   }
 
   .scroll {
-    overflow: auto;
+    overflow: visible;
   }
 }

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector, useScreen } from '../../app/hooks';
+import { AuthArea } from "../../components/AuthArea/AuthArea";
 import { Button } from "../../components/Button/Button";
 import { ErrorImg } from "../../components/ErrorImg/ErrorImg";
 import { HudSection } from "../../components/HudSection/HudSection";
@@ -13,6 +14,7 @@ export function StarShips() {
     const { ships, loading, currentApiPage, error } = useAppSelector(
         state => state.starships
     );
+    const { isPortrait } = useScreen();
 
     useEffect(() => {
         if (ships.length === 0) {
@@ -47,6 +49,7 @@ export function StarShips() {
                             onClick={handleNextPage}>
                             Load more starships
                         </Button>}
+                    {isPortrait && <AuthArea />}
                 </div>
             }
         </HudSection>
