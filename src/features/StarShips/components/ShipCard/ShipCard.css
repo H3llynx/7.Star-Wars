@@ -1,17 +1,19 @@
 .hud-card {
     display: block;
-    text-decoration: none;
     color: inherit;
     width: 100%;
     height: 100%;
     max-width: 380px;
+    position: relative;
+    z-index: 0;
     filter:
         drop-shadow(0 0 3px var(--color-blue-neon));
 
     &:hover,
     &:focus-visible {
         transform: scale(1.05);
-        filter: drop-shadow(0 0 15px var(--color-blue-neon))
+        filter: drop-shadow(0 0 15px var(--color-blue-neon));
+        z-index: 2;
     }
 }
 
