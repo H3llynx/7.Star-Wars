@@ -5,14 +5,15 @@ import type { User } from 'firebase/auth';
 import { signOut } from 'firebase/auth';
 import { firebaseAuth } from '../../firebase';
 import { handleEmailLogin, handleEmailRegister } from "./scripts/auth";
+import type { Auth } from './types/types';
 
-type FormattedUser = {
+export type FormattedUser = {
     uid: string;
     email: string | null;
     displayName: string | null;
 }
 
-type AuthState = {
+export type AuthState = {
     user: FormattedUser | null;
     loading: boolean;
     error: string | null;
@@ -37,9 +38,9 @@ export const formatUser = (user: User | null) => {
 
 export const registerUser = createAsyncThunk(
     "auth/register",
-    async ({ name, email, password }: { name: string; email: string; password: string }, { rejectWithValue }) => {
+    async ({ name, email, password }: Auth, { rejectWithValue }) => {
         try {
-            const user = await handleEmailRegister(name, email, password);
+            const user = await handleEmailRegister({ name, email, password });
             return user;
         } catch (error) {
             if (error instanceof FirebaseError) {
@@ -52,9 +53,9 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
     "auth/login",
-    async ({ email, password }: { email: string; password: string }, { rejectWithValue }) => {
+    async ({ email, password }: Auth, { rejectWithValue }) => {
         try {
-            const user = await handleEmailLogin(email, password);
+            const user = await handleEmailLogin({ email, password });
             return user;
         } catch (error) {
             if (error instanceof FirebaseError) {
@@ -70,7 +71,6 @@ export const logoutUser = createAsyncThunk(
     async () => {
         await signOut(firebaseAuth);
     });
-
 
 const authSlice = createSlice({
     name: "auth",

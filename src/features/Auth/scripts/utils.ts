@@ -4,6 +4,7 @@ export const handleErrorMessage = (errorCode: string) => {
         "auth/email-already-in-use": "ERROR: CREDENTIALS ALREADY REGISTERED IN SYSTEM DATABASE",
         "auth/invalid-email": "ERROR: INVALID EMAIL FORMAT DETECTED",
         "auth/weak-password": "ERROR: PASSWORD STRENGTH INSUFFICIENT - MINIMUM 6 CHARACTERS REQUIRED",
+        "auth/invalid-credential": "ERROR: INVALID CREDENTIALS - ACCESS DENIED"
     };
 
     return errorCode
