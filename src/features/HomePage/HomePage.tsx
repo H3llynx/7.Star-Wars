@@ -1,8 +1,13 @@
+import { useAppSelector, useScreen } from "../../app/hooks";
 import Hologram from "../../assets/images/hologram.png";
+import { AuthArea } from "../../components/AuthArea/AuthArea";
 import { TLink } from "../../components/TLink/TLink";
 import "./HomePage.css";
 
 export function HomePage() {
+    const { isPortrait } = useScreen();
+    const { user } = useAppSelector(state => state.auth);
+
     return (
         <>
             <div className="overlay" />
@@ -20,9 +25,37 @@ export function HomePage() {
                         Each record contains vessel classification, performance metrics<br />
                         and operational capacity.
                     </p>
-                    <TLink to="starships">
-                        Access database
-                    </TLink>
+                    {!isPortrait &&
+                        <>
+                            {user &&
+                                <TLink to="starships">
+                                    Access database
+                                </TLink>
+                            }
+                            {!user &&
+                                < TLink to="auth">
+                                    Authenticate to access database
+                                </TLink>
+                            }
+                        </>
+                    }
+                    {isPortrait &&
+                        <>
+                            {user &&
+                                <>
+                                    <AuthArea />
+                                    <TLink to="starships">
+                                        Access database
+                                    </TLink>
+                                </>
+                            }
+                            {!user &&
+                                < TLink to="auth">
+                                    Authenticate to access database
+                                </TLink>
+                            }
+                        </>
+                    }
                     <p className="terminal-status">
                         SYSTEM STATUS<br />
                         DATABASE: ONLINE<br />
@@ -33,7 +66,7 @@ export function HomePage() {
                 <div className="droid-hologram">
                     <img src={Hologram} alt="Astromech droid hologram" />
                 </div>
-            </section>
+            </section >
         </>
     )
 }

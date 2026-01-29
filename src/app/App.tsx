@@ -1,7 +1,8 @@
 import type { User } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { RouterProvider } from 'react-router';
+import { ScreenContext } from '../context/ScreenContext';
 import { formatUser, setUser } from '../features/Auth/AuthSlice';
 import { firebaseAuth } from '../firebase';
 import { router } from '../router';
@@ -18,8 +19,20 @@ function App() {
     return () => unsubscribe();
   }, [dispatch]);
 
-  return <RouterProvider router={router} />;
+  const [isPortrait, setIsPortrait] = useState(window.matchMedia("(orientation: portrait)").matches);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(orientation: portrait)");
+    mediaQuery.addEventListener("change", (e) => {
+      setIsPortrait(e.matches);
+    });
+  }, [])
+
+  return (
+    <ScreenContext value={{ isPortrait }}>
+      <RouterProvider router={router} />
+    </ScreenContext>
+  )
 }
 
 export default App

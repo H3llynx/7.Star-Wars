@@ -1,18 +1,13 @@
 import { NavLink, useLocation } from "react-router";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppSelector, useScreen } from "../../app/hooks";
 import Logo from "../../assets/svg/logo.svg?react";
-import { logoutUser } from "../../features/Auth/AuthSlice";
+import { AuthArea } from "../AuthArea/AuthArea";
 import "./Header.css";
 
 export function Header() {
-
     const location = useLocation();
     const { user } = useAppSelector(state => state.auth);
-    const dispatch = useAppDispatch();
-
-    const handleLogOut = async () => {
-        dispatch(logoutUser());
-    }
+    const { isPortrait } = useScreen();
 
     return (
         <header>
@@ -25,28 +20,17 @@ export function Header() {
                 >
                     Home
                 </NavLink>
-                <NavLink
-                    to="/starships"
-                    className="nav-link neon-text"
-                    tabIndex={location.pathname === "/starships" ? -1 : 0}
-                >
-                    Starships
-                </NavLink>
+                {user &&
+                    <NavLink
+                        to="/starships"
+                        className="nav-link neon-text"
+                        tabIndex={location.pathname === "/starships" ? -1 : 0}
+                    >
+                        Starships
+                    </NavLink>
+                }
             </nav>
-            {user &&
-                <button
-                    onClick={handleLogOut}
-                    tabIndex={0}
-                >Log out
-                </button>}
-            {!user &&
-                <NavLink
-                    to="auth"
-                    tabIndex={0}
-                >
-                    Login
-                </NavLink>
-            }
+            {!isPortrait && <AuthArea />}
         </header>
     )
 }
