@@ -60,8 +60,10 @@ export function HomePage() {
                         SYSTEM STATUS<br />
                         DATABASE: ONLINE<br />
                         INTERFACE: ACTIVE<br />
-                        SELECT A STARSHIP TO ACCESS ITS TACTICAL RECORD
                     </p>
+                    {user &&
+                        <p className="terminal-status">SELECT A STARSHIP TO ACCESS ITS TACTICAL RECORD</p>
+                    }
                 </div>
                 <div className="droid-hologram">
                     <img src={Hologram} alt="Astromech droid hologram" />

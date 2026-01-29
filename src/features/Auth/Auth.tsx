@@ -18,7 +18,7 @@ export function Auth() {
 
     useEffect(() => {
         if (user) {
-            navigate("starships", { replace: true });
+            navigate("/starships", { replace: true });
         }
     }, [user, navigate]);
 

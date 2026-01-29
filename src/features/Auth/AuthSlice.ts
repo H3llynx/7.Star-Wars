@@ -41,7 +41,8 @@ export const registerUser = createAsyncThunk(
     async ({ name, email, password }: Auth, { rejectWithValue }) => {
         try {
             const user = await handleEmailRegister({ name, email, password });
-            return user;
+            const formattedUser = formatUser(user);
+            return formattedUser;
         } catch (error) {
             if (error instanceof FirebaseError) {
                 return rejectWithValue(error.code);
@@ -56,7 +57,8 @@ export const loginUser = createAsyncThunk(
     async ({ email, password }: Auth, { rejectWithValue }) => {
         try {
             const user = await handleEmailLogin({ email, password });
-            return user;
+            const formattedUser = formatUser(user);
+            return formattedUser;
         } catch (error) {
             if (error instanceof FirebaseError) {
                 return rejectWithValue(error.code);
@@ -90,7 +92,7 @@ const authSlice = createSlice({
             )
             .addCase(registerUser.fulfilled, (state, action) => {
                 state.loading = false;
-                state.user = formatUser(action.payload);
+                state.user = action.payload;
                 state.authenticated = true;
                 state.error = null;
             }
@@ -108,7 +110,7 @@ const authSlice = createSlice({
             )
             .addCase(loginUser.fulfilled, (state, action) => {
                 state.loading = false;
-                state.user = formatUser(action.payload);
+                state.user = action.payload;
                 state.authenticated = true;
                 state.error = null;
             }

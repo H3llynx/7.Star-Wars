@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router';
 import { ScreenContext } from '../context/ScreenContext';
 import { formatUser, setUser } from '../features/Auth/AuthSlice';
 import { firebaseAuth } from '../firebase';
-import { router } from '../router';
+import { router } from '../router/router';
 import { useAppDispatch } from './hooks';
 
 function App() {
