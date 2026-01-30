@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, it } from "vitest";
-import { getShipById, getShips } from "../features/StarShips/api/starships-service";
+import { getPilot, getShipById, getShips } from "../features/StarShips/api/starships-service";
 import type { StarShip } from "../features/StarShips/types/types";
 
 describe("getShips", () => {
@@ -30,5 +30,14 @@ describe("getShipsById", () => {
     it("returns the correct type of data", async () => {
         const ship = await (getShipById(3));
         expectTypeOf(ship).toExtend<StarShip>();
+    });
+})
+
+describe("getPilot", () => {
+    it("should be declared", () => {
+        expect(typeof getPilot).toBe("function");
+    });
+    it("should return an object", async () => {
+        expect(typeof await getPilot("13")).toBe("string");
     });
 })

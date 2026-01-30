@@ -11,7 +11,9 @@ export function Header() {
 
     return (
         <header>
-            <Logo className="logo" aria-label="Star Wars" />
+            <NavLink to="/" className="logo">
+                <Logo aria-label="Star Wars" />
+            </NavLink>
             <nav>
                 <NavLink
                     to="/"

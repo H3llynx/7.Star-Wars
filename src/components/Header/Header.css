@@ -27,9 +27,12 @@ h1 {
 
 .logo {
     height: 100%;
-    width: auto;
     filter: drop-shadow(0 0 8px var(--dark));
     color: rgba(255, 232, 31, 0.85);
+
+    svg {
+        width: auto;
+    }
 }
 
 nav {

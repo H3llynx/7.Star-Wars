@@ -17,7 +17,7 @@ function App() {
       dispatch(setUser(formatUser(user)));
     });
     return () => unsubscribe();
-  }, [dispatch]);
+  }, []);
 
   const [isPortrait, setIsPortrait] = useState(window.matchMedia("(orientation: portrait)").matches);
 

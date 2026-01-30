@@ -22,7 +22,7 @@ export type AuthState = {
 
 const initialState: AuthState = {
     user: null,
-    loading: false,
+    loading: true,
     error: null,
     authenticated: false
 };
@@ -97,6 +97,7 @@ const authSlice = createSlice({
         setUser: (state, action: PayloadAction<FormattedUser | null>) => {
             state.user = action.payload;
             state.authenticated = action.payload ? true : false;
+            state.loading = false;
         },
     },
     extraReducers: (builder) => {
