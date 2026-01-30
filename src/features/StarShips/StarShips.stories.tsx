@@ -4,7 +4,7 @@ import { StarShips } from "./StarShips";
 
 const meta: Meta<typeof StarShips> = {
     component: StarShips,
-    title: 'Components/StarShips'
+    title: 'Components/Starships/StarShips'
 };
 
 export default meta;

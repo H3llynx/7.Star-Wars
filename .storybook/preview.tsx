@@ -1,17 +1,25 @@
 import type { Decorator, Preview } from '@storybook/react-vite';
+import { initialize, mswLoader } from 'msw-storybook-addon';
 import { Provider } from 'react-redux';
 import { withRouter } from 'storybook-addon-remix-react-router';
 import { store } from "../src/app/store";
+import { ScreenContext } from "../src/context/ScreenContext";
 import "../src/styles/index.css";
 
+initialize();
+const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
 const withProviders: Decorator = (Story) => (
-  <Provider store={store}>
-    {Story()}
-  </Provider>
+  <ScreenContext value={{ isPortrait }}>
+    <Provider store={store}>
+      {Story()}
+    </Provider>
+  </ScreenContext>
 );
 
 const preview: Preview = {
   decorators: [withProviders, withRouter],
+  loaders: [mswLoader],
   parameters: {
     controls: {
       matchers: {

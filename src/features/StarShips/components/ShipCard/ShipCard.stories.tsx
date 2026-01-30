@@ -3,7 +3,7 @@ import { ShipCard } from "./ShipCard";
 
 const meta: Meta = {
     component: ShipCard,
-    title: 'Components/ShipCard',
+    title: 'Components/Starships/ShipCard',
 };
 
 export default meta;

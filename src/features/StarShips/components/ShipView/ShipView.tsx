@@ -36,7 +36,7 @@ export function ShipView() {
         <HudSection title={title}>
             {selectedShipLoading && <Loading />}
             {error && <ErrorImg />}
-            {!error &&
+            {!error && ship &&
                 <article>
                     <img src={ship.src} className="ship-hologram" />
                     <div className="ship-info scroll">

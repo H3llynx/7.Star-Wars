@@ -37,7 +37,7 @@ export const formatUser = (user: User | null) => {
 };
 
 export const registerUser = createAsyncThunk(
-    "auth/register",
+    "auth/registerUser",
     async ({ name, email, password }: Auth, { rejectWithValue }) => {
         try {
             const user = await handleEmailRegister({ name, email, password });
@@ -53,7 +53,7 @@ export const registerUser = createAsyncThunk(
 );
 
 export const loginUser = createAsyncThunk(
-    "auth/login",
+    "auth/loginUser",
     async ({ email, password }: Auth, { rejectWithValue }) => {
         try {
             const user = await handleEmailLogin({ email, password });
@@ -69,7 +69,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const logWithGoogle = createAsyncThunk(
-    "auth/google",
+    "auth/logWithGoogle",
     async (_, { rejectWithValue }) => {
         try {
             const user = await handleGoogleLogin();

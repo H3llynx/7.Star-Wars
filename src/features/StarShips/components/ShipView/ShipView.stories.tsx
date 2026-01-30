@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { delay, http } from 'msw';
 import { reactRouterParameters } from 'storybook-addon-remix-react-router';
 import { store } from '../../../../app/store';
 import { ShipView } from "./ShipView";
 
 const meta: Meta<typeof ShipView> = {
     component: ShipView,
-    title: 'Components/ShipView'
+    title: 'Components/Starships/ShipView'
 };
 
 export default meta;
@@ -85,6 +86,13 @@ export const Loading: Story = {
         return <ShipView />;
     },
     parameters: {
+        msw: {
+            handlers: [
+                http.get('**/starships/:id', async () => {
+                    await delay('infinite');
+                }),
+            ],
+        },
         reactRouter: reactRouterParameters({
             location: {
                 pathParams: { id: '4' }
