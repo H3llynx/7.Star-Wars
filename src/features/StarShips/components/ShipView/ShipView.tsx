@@ -5,6 +5,7 @@ import { ErrorImg } from '../../../../components/ErrorImg/ErrorImg';
 import { HudSection } from '../../../../components/HudSection/HudSection';
 import { Loading } from '../../../../components/Loading/Loading';
 import { fetchShipById } from '../../StarShipsSlice';
+import type { StarShip } from '../../types/types';
 import "./ShipView.css";
 
 export function ShipView() {
@@ -13,7 +14,7 @@ export function ShipView() {
         (state) => state.starships
     );
     const location = useLocation();
-    const ship = location.state?.ship || selectedShip;
+    const ship: StarShip = location.state?.ship || selectedShip;
 
     const { id } = useParams<{ id: string }>();
     const shipId = Number(id);
@@ -93,6 +94,18 @@ export function ShipView() {
                             </div>
                         </div>
 
+                        {ship.pilots &&
+                            <div className="hud-section">
+                                <h2>PILOTS</h2>
+                                <div className="hud-grid-3">
+                                    {ship.pilots.map(pilot => {
+                                        return (
+                                            <p key={pilot.id}>{pilot.name}</p>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        }
                     </div>
                 </article>
             }

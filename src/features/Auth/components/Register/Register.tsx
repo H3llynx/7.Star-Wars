@@ -15,8 +15,6 @@ export function Register({ onClick }: { onClick: () => void }) {
     const dispatch = useAppDispatch();
     const { error, loading } = useAppSelector(state => state.auth);
 
-    console.log('Loading state:', loading);
-
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
         dispatch(registerUser({ name, email, password }));
