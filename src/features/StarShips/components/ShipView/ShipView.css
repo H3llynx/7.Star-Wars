@@ -23,7 +23,7 @@ article {
     font-size: clamp(0.55rem, 0.9vw, 0.75rem);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-text-label);
+    color: var(--blue-label);
 }
 
 .hud-section {
@@ -42,11 +42,18 @@ article {
     .label {
         font-size: clamp(0.45rem, 0.8vw, 0.65rem);
         letter-spacing: 0.12em;
-        color: var(--color-text-label);
+        color: var(--blue-label);
     }
 
     .value {
         font-size: clamp(0.55rem, 0.9vw, 0.75rem);
+    }
+
+    .pilot-name {
+        font-size: clamp(0.45rem, 0.9vw, 0.6rem);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--blue-neon);
     }
 }
 
@@ -60,6 +67,13 @@ article {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
+}
+
+.hud-pilot {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
 }
 
 .row {
@@ -90,6 +104,6 @@ article {
         clip-path: var(--hud-clip);
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
-        background: url(../../../../assets//svg/hud-border.svg) var(--color-dark-rgba-2);
+        background: url(../../../../assets//svg/hud-border.svg) var(--dark-rgba-2);
     }
 }

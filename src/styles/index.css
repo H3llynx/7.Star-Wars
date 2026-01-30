@@ -4,16 +4,20 @@
   --font-inter: "Inter", sans-serif;
   --font-orbitron: "Orbitron", sans-serif;
   --font-black-ops: "Black Ops One", system-ui;
-  --color-dark: rgb(30, 30, 30);
-  --color-light: rgb(220, 240, 255);
-  --color-text-label: rgba(160, 210, 255, 0.55);
-  --color-blue-neon-rgba: rgba(143, 220, 255, 0.6);
-  --color-blue-neon-rgba-2: rgba(143, 220, 255, 0.35);
-  --color-dark-rgba: rgba(0, 0, 0, 0.85);
-  --color-dark-rgba-2: rgba(10, 25, 30, 0.8);
-  --color-blue-neon: rgb(143, 220, 255);
-  --color-red: rgb(255, 43, 43);
-  --color-red-rgba: rgba(255, 43, 43, 0.8);
+  --dark: rgb(30, 30, 30);
+  --light: rgb(220, 240, 255);
+  --blue-label: rgba(160, 210, 255, 0.55);
+  --blue-neon-rgba: rgba(143, 220, 255, 0.6);
+  --blue-neon-rgba-2: rgba(143, 220, 255, 0.35);
+  --dark-rgba: rgba(0, 0, 0, 0.85);
+  --dark-rgba-2: rgba(10, 25, 30, 0.8);
+  --blue-neon: rgb(143, 220, 255);
+  --red: rgb(255, 43, 43);
+  --red-rgba: rgba(255, 43, 43, 0.8);
+  --cyan: var(--cyan);
+  --cyan-rgba: rgba(0, 255, 255, 0.6);
+  --cyan-rgba-2: rgba(0, 255, 255, 0.3);
+  --cyan-rgba-3: rgba(0, 255, 255, 0.1);
   --neon-gradient: linear-gradient(90deg,
       rgb(200, 243, 255),
       rgb(143, 220, 255),
@@ -68,11 +72,11 @@
 
   0%,
   100% {
-    filter: drop-shadow(0 0 1px var(--color-blue-neon-rgba)) drop-shadow(0 0 2px var(--color-blue-neon-rgba-2));
+    filter: drop-shadow(0 0 1px var(--blue-neon-rgba)) drop-shadow(0 0 2px var(--blue-neon-rgba-2));
   }
 
   50% {
-    filter: drop-shadow(0 0 2px rgba(143, 220, 255, 0.7)) drop-shadow(0 0 4px var(--color-blue-neon-rgba)) drop-shadow(0 0 5px var(--color-blue-neon-rgba-2));
+    filter: drop-shadow(0 0 2px rgba(143, 220, 255, 0.7)) drop-shadow(0 0 4px var(--blue-neon-rgba)) drop-shadow(0 0 5px var(--blue-neon-rgba-2));
   }
 }
 
@@ -80,11 +84,11 @@
 
   0%,
   100% {
-    text-shadow: 0 0 4px var(--color-red), 0 0 8px var(--color-red);
+    text-shadow: 0 0 4px var(--red), 0 0 8px var(--red);
   }
 
   50% {
-    text-shadow: 0 0 8px var(--color-red), 0 0 16px var(--color-red);
+    text-shadow: 0 0 8px var(--red), 0 0 16px var(--red);
   }
 }
 
@@ -97,6 +101,16 @@
   to {
     opacity: 1;
     width: 100%;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -118,7 +132,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  color: var(--color-light);
+  color: var(--light);
   font-family: var(--font-inter);
   font-size: 0.85rem;
 
@@ -174,7 +188,7 @@ section {
 
 .hud {
   clip-path: var(--hud-clip);
-  background: var(--color-dark-rgba) var(--neon-gradient-rgba);
+  background: var(--dark-rgba) var(--neon-gradient-rgba);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
   display: flex;
@@ -187,8 +201,7 @@ section {
 
 .neon-text,
 h1,
-h3,
-h4 {
+h3 {
   background: var(--neon-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -224,16 +237,9 @@ h3 {
   font-size: clamp(0.7rem, 1.2vw, 1rem);
 }
 
-
-h4 {
-  font-family: var(--font-black-ops);
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
 .terminal {
   padding: 0.6rem 0.4rem;
-  color: var(--color-blue-neon);
+  color: var(--blue-neon);
   font-family: var(--font-orbitron);
   font-size: clamp(0.45rem, 0.9vw, 0.65rem);
   text-transform: uppercase;
@@ -251,9 +257,9 @@ h4 {
 
   &:hover,
   &:focus-visible {
-    color: var(--color-light);
-    text-shadow: 0 0 10px var(--color-blue-neon-rgba);
-    background-color: var(--color-dark-rgba);
+    color: var(--light);
+    text-shadow: 0 0 10px var(--blue-neon-rgba);
+    background-color: var(--dark-rgba);
   }
 }
 
@@ -270,7 +276,7 @@ h4 {
     height: 1px;
     background: linear-gradient(90deg,
         transparent,
-        var(--color-blue-neon),
+        var(--blue-neon),
         transparent);
     animation: scan 2.5s ease-in-out infinite;
   }
@@ -320,7 +326,7 @@ h4 {
 .auth-area {
   display: flex;
   gap: 0.4rem;
-  color: var(--color-blue-neon-rgba);
+  color: var(--blue-neon-rgba);
   font-size: clamp(0.45rem, 0.9vw, 0.7rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -330,7 +336,7 @@ h4 {
   }
 
   .user-name {
-    color: var(--color-blue-neon);
+    color: var(--blue-neon);
   }
 
   button,
@@ -338,14 +344,14 @@ h4 {
     font-size: inherit;
     letter-spacing: inherit;
     text-transform: uppercase;
-    color: var(--color-blue-neon);
+    color: var(--blue-neon);
     position: relative;
 
     &:hover::after,
     &:focus-visible::after {
       content: " ";
       height: 2px;
-      background: var(--color-blue-neon);
+      background: var(--blue-neon);
       position: absolute;
       left: 0;
       bottom: 0;

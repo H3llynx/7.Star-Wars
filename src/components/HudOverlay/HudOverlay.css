@@ -43,7 +43,7 @@
     font-size: clamp(0.3rem, 1vw, 0.7rem);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-blue-neon-rgba);
+    color: var(--blue-neon-rgba);
     opacity: 0.6;
 }
 
@@ -54,6 +54,6 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--color-blue-neon);
+    background: var(--blue-neon);
     animation: pulse 3s ease-in-out infinite;
 }

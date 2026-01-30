@@ -19,7 +19,8 @@ export type StarShip = {
     url: string;
 }
 
-type Pilot = {
+export type Pilot = {
     id: string;
     name: string;
+    src: string;
 }

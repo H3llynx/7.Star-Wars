@@ -9,7 +9,7 @@ label {
     }
 
     &:has(:user-invalid) {
-        color: var(--color-red);
+        color: var(--red);
         animation: sith-pulse-text 1.5s infinite;
 
         .invalid-svg {
@@ -22,14 +22,14 @@ input {
     border: 0;
     background: none;
     padding: 0.2rem;
-    color: var(--color-light);
+    color: var(--light);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     width: min(300px, 100%);
     font-size: clamp(0.45rem, 0.9vw, 0.65rem);
 
     &:user-invalid {
-        color: var(--color-red);
+        color: var(--red);
     }
 }
 

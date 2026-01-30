@@ -7,12 +7,12 @@
     position: relative;
     z-index: 0;
     filter:
-        drop-shadow(0 0 3px var(--color-blue-neon));
+        drop-shadow(0 0 3px var(--blue-neon));
 
     &:hover,
     &:focus-visible {
         transform: scale(1.05);
-        filter: drop-shadow(0 0 15px var(--color-blue-neon));
+        filter: drop-shadow(0 0 15px var(--blue-neon));
         z-index: 2;
     }
 }
@@ -52,7 +52,7 @@
     right: 1.2rem;
     font-size: clamp(0.45rem, 0.8vw, 0.65rem);
     letter-spacing: 0.15em;
-    color: var(--color-blue-neon-rgba-2);
+    color: var(--blue-neon-rgba-2);
 }
 
 .stats-container {
@@ -71,7 +71,7 @@
     .label {
         font-size: clamp(0.45rem, 0.8vw, 0.6rem);
         letter-spacing: 0.18em;
-        color: var(--color-text-label);
+        color: var(--blue-label);
     }
 
     .value {

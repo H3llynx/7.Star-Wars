@@ -2,11 +2,11 @@
 
     0%,
     100% {
-        filter: drop-shadow(0 0 4px var(--color-blue-neon-rgba)) drop-shadow(0 0 8px var(--color-blue-neon-rgba-2));
+        filter: drop-shadow(0 0 4px var(--blue-neon-rgba)) drop-shadow(0 0 8px var(--blue-neon-rgba-2));
     }
 
     50% {
-        filter: drop-shadow(0 0 8px rgba(143, 220, 255, 0.8)) drop-shadow(0 0 16px var(--color-blue-neon-rgba)) drop-shadow(0 0 24px var(--color-blue-neon-rgba-2));
+        filter: drop-shadow(0 0 8px rgba(143, 220, 255, 0.8)) drop-shadow(0 0 16px var(--blue-neon-rgba)) drop-shadow(0 0 24px var(--blue-neon-rgba-2));
     }
 }
 
@@ -28,7 +28,7 @@ h1 {
 .logo {
     height: 100%;
     width: auto;
-    filter: drop-shadow(0 0 8px var(--color-dark));
+    filter: drop-shadow(0 0 8px var(--dark));
     color: rgba(255, 232, 31, 0.85);
 }
 
@@ -46,7 +46,7 @@ nav {
     font-weight: 500;
 
     filter:
-        drop-shadow(0 0 4px var(--color-dark));
+        drop-shadow(0 0 4px var(--dark));
 
     &:hover,
     &:focus-visible {
@@ -60,7 +60,7 @@ nav {
         position: absolute;
         left: 0;
         bottom: 0;
-        background: var(--color-blue-neon-rgba-2);
+        background: var(--blue-neon-rgba-2);
     }
 
     &.active::after,
@@ -68,7 +68,7 @@ nav {
     &:focus-visible::after {
         content: " ";
         height: 3px;
-        background: var(--color-blue-neon);
+        background: var(--blue-neon);
         position: absolute;
         left: 0;
         bottom: 0;

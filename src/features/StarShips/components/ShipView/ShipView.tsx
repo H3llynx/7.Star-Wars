@@ -6,6 +6,7 @@ import { HudSection } from '../../../../components/HudSection/HudSection';
 import { Loading } from '../../../../components/Loading/Loading';
 import { fetchShipById } from '../../StarShipsSlice';
 import type { StarShip } from '../../types/types';
+import { PilotCard } from '../PilotCard/PilotCard';
 import "./ShipView.css";
 
 export function ShipView() {
@@ -97,10 +98,10 @@ export function ShipView() {
                         {ship.pilots &&
                             <div className="hud-section">
                                 <h2>PILOTS</h2>
-                                <div className="hud-grid-3">
+                                <div className="hud-pilot">
                                     {ship.pilots.map(pilot => {
                                         return (
-                                            <p key={pilot.id}>{pilot.name}</p>
+                                            <PilotCard pilot={pilot} />
                                         )
                                     })}
                                 </div>

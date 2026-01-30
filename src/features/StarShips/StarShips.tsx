@@ -17,6 +17,7 @@ export function StarShips() {
     const { isPortrait } = useScreen();
 
     useEffect(() => {
+        localStorage.removeItem("starships")
         if (ships.length === 0) {
             dispatch(fetchStarships(currentApiPage));
         }

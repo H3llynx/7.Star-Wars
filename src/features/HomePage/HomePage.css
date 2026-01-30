@@ -111,7 +111,7 @@
 
 .terminal-status {
     margin-top: 1rem;
-    color: var(--color-blue-neon-rgba);
+    color: var(--blue-neon-rgba);
     font-size: clamp(0.45rem, 0.8vw, 0.6rem);
     letter-spacing: 0.18em;
     line-height: 1.5;

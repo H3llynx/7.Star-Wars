@@ -1,5 +1,5 @@
 import { getData } from "../../../services/api-services";
-import type { StarShip } from "../types/types";
+import type { Pilot, StarShip } from "../types/types";
 import { StarShipResultsSchema, StarShipSchema } from "../types/zod-validation";
 import { getPilotId, getShipId } from "./utils";
 
@@ -12,9 +12,10 @@ export const getShips = async (page: number): Promise<StarShip[]> => {
         const pilots = [];
         for (const pilot of ship.pilots) {
             const id = getPilotId(pilot);
-            const pilotObj = {
+            const pilotObj: Pilot = {
                 id: id,
-                name: await getPilot(id)
+                name: await getPilot(id),
+                src: `pilots/${id}.webp`
             }
             pilots.push(pilotObj)
         }
@@ -30,12 +31,13 @@ export const getShipById = async (id: number): Promise<StarShip> => {
     const URL = `https://swapi.dev/api/starships/${id}`;
     const data = await getData(URL);
     const validated = StarShipSchema.parse(data);
-    const pilots = [];
+    const pilots: Pilot[] = [];
     for (const pilot of validated.pilots) {
         const id = getPilotId(pilot);
-        const pilotObj = {
+        const pilotObj: Pilot = {
             id: id,
-            name: await getPilot(id)
+            name: await getPilot(id),
+            src: `pilots/${id}.webp`
         }
         pilots.push(pilotObj)
     }

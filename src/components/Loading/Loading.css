@@ -1,13 +1,3 @@
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 @keyframes blink-dots {
 
     0%,
@@ -41,7 +31,7 @@
 
     .terminal-prompt {
         opacity: 0.6;
-        color: var(--color-blue-neon, #00ffff);
+        color: var(--blue-neon);
     }
 }
 
@@ -56,7 +46,7 @@
     width: 100%;
     height: 100%;
     border: 2px solid transparent;
-    border-top-color: var(--color-blue-neon, #00ffff);
+    border-top-color: var(--blue-neon);
     border-radius: 50%;
     animation: spin 1.5s linear infinite;
 
@@ -65,7 +55,7 @@
         height: 70%;
         top: 15%;
         left: 15%;
-        border-top-color: rgba(0, 255, 255, 0.6);
+        border-top-color: var(--cyan-rgba);
         animation-duration: 1s;
         animation-direction: reverse;
     }
@@ -75,13 +65,13 @@
         height: 40%;
         top: 30%;
         left: 30%;
-        border-top-color: rgba(0, 255, 255, 0.3);
+        border-top-color: var(--cyan-rgba-2);
         animation-duration: 0.75s;
     }
 }
 
 .loading-text {
-    color: var(--color-light);
+    color: var(--light);
     font-family: var(--font-orbitron);
     font-size: clamp(0.5rem, 1vw, 0.7rem);
     text-transform: uppercase;
