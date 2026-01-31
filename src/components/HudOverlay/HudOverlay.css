@@ -19,8 +19,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 95%;
-    height: 95%;
+    width: 95vw;
+    height: 95vh;
     pointer-events: none;
     z-index: 1;
     font-family: var(--font-inter);
