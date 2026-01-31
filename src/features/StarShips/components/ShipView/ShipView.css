@@ -29,7 +29,7 @@ article {
 .hud-section {
     padding-top: 1rem;
 
-    &:not(:last-of-type)::after {
+    &::after {
         content: "";
         display: block;
         height: 1px;
@@ -40,21 +40,18 @@ article {
     }
 
     .label {
-        font-size: clamp(0.55rem, 0.9vw, 0.65rem);
+        font-size: 0.65rem;
         letter-spacing: 0.12em;
         color: var(--blue-label);
     }
 
     .value {
-        font-size: clamp(0.55rem, 0.9vw, 0.75rem);
+        font-size: clamp(0.65rem, 0.9vw, 0.75rem);
     }
+}
 
-    .pilot-name {
-        font-size: clamp(0.45rem, 0.9vw, 0.6rem);
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--blue-neon);
-    }
+.film-section {
+    padding-top: 1rem;
 }
 
 .hud-grid {
@@ -95,10 +92,24 @@ article {
 @media (orientation: portrait) {
     article {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
-    .ship-info {
+    .ship-name,
+    .hud-section,
+    .ship-hologram,
+    .film-section h2 {
+        width: var(--full-width);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ship-info,
+    .ship-hologram {
         padding: 0;
+    }
+
+    .film-section {
+        padding-bottom: 1rem;
     }
 }

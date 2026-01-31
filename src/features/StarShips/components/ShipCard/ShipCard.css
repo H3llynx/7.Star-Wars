@@ -64,14 +64,14 @@
     gap: 4px;
 
     .label {
-        font-size: clamp(0.5rem, 0.8vw, 0.6rem);
+        font-size: clamp(0.5rem, 0.9vw, 0.6rem);
         letter-spacing: 0.18em;
         color: var(--blue-label);
     }
 
     .value {
         font-weight: 600;
-        font-size: clamp(0.4rem, 0.9vw, 0.7rem);
+        font-size: clamp(0.5rem, 0.9vw, 0.7rem);
         text-shadow: 0 0 6px rgba(120, 220, 255, 0.35);
         overflow-wrap: break-word;
     }
@@ -87,5 +87,11 @@ h2 {
     .hud-card {
         padding: 3rem 1rem 1rem 1rem;
         grid-template-columns: 20% 1fr;
+    }
+}
+
+@media (orientation:portrait) {
+    .stat .label {
+        font-size: 0.6rem;
     }
 }

@@ -118,7 +118,6 @@ form {
     transition: all 0.3s ease;
 }
 
-
 @media (orientation: portrait) {
     .button-group {
         margin-top: 2rem;

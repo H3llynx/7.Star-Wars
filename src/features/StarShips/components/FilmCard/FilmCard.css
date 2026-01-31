@@ -74,6 +74,7 @@
     padding: 0.25rem 0.5rem;
     font-family: var(--font-orbitron);
     font-size: clamp(0.4rem, 0.9vw, 0.55rem);
+    font-weight: 500;
     letter-spacing: 0.1em;
     z-index: 2;
     box-shadow: 0 0 10px var(--blue-neon);
@@ -122,24 +123,32 @@
     }
 }
 
-h4 {
+.film-title {
     font-family: var(--font-orbitron);
-    font-size: clamp(0.5rem, 0.8vw, 0.7rem);
+    font-size: clamp(0.5rem, 0.9vw, 0.7rem);
     color: var(--color-light);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 500;
-    line-height: 1.3;
+    pointer-events: none;
 }
 
-@media (max-width: 1200px) and (orientation: landscape) {
+@media (max-width: 1024px) and (orientation: landscape) {
     .film-status {
         display: none;
+    }
+
+    .film-card {
+        margin-right: 1.5rem;
     }
 }
 
 @media (orientation: portrait) {
     .film-card {
         min-width: 180px;
+
+        &:first-child {
+            margin-left: 1rem;
+        }
     }
 }

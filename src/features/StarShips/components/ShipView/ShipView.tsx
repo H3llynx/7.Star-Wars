@@ -47,8 +47,10 @@ export function ShipView() {
                     <article>
                         <img src={ship.src} className="ship-hologram" />
                         <div className="ship-info scroll">
-                            <h1>{ship.name}</h1>
-                            <p className="ship-subtitle">{ship.manufacturer}</p>
+                            <div className="ship-name">
+                                <h1>{ship.name}</h1>
+                                <p className="ship-subtitle">{ship.manufacturer}</p>
+                            </div>
 
                             <div className="hud-section">
                                 <h2>IDENTITY</h2>
@@ -111,7 +113,7 @@ export function ShipView() {
                                     </div>
                                 </div>
                             }
-                            <div className="hud-section">
+                            <div className="film-section">
                                 <h2>FILMS</h2>
                                 <div className="film-scroll">
                                     {ship.films.map(film => {

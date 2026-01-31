@@ -43,7 +43,6 @@
       rgba(0, 0, 0, 0.7),
       transparent);
   --full-width: 80vw;
-  background-color: #0a0a0c;
 }
 
 @keyframes scan {
@@ -128,14 +127,19 @@
 
 }
 
+html {
+  background-color: #0a0a0c;
+}
+
 body {
-  background-image: url(../assets/images/app-bg.png);
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
   color: var(--light);
   font-family: var(--font-inter);
   font-size: 0.85rem;
+  background-image: url(../assets/images/app-bg.png);
+  background-size: cover;
+  width: 100%;
+  height: 100dvh;
+  background-position: center center;
 
   &::before {
     background: var(--overlay);
@@ -170,10 +174,13 @@ a {
   left: 0;
 }
 
-header,
-section {
+header {
   width: var(--full-width);
   position: relative;
+}
+
+section {
+  width: 100vw;
 }
 
 .overlay {
@@ -184,7 +191,11 @@ section {
 }
 
 .centered {
-  margin: auto 0;
+  height: 80dvh;
+  margin-bottom: 5dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hud {
@@ -217,15 +228,15 @@ h3 {
 
 h1 {
   text-transform: uppercase;
-  margin-bottom: 1.8rem;
   font-family: var(--font-orbitron);
   font-size: clamp(0.75rem, 1.2vw, 1.2rem);
   letter-spacing: 0.25em;
   text-shadow: 0 0 10px rgba(140, 220, 255, 0.5);
+  margin-bottom: 1.5rem;
 }
 
 h2 {
-  font-size: clamp(0.45rem, 0.9vw, 0.55rem);
+  font-size: 0.55rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   font-family: var(--font-orbitron);
@@ -268,6 +279,7 @@ h3 {
   position: relative;
   padding: 0.8rem 0.2rem;
   overflow: hidden;
+  flex-shrink: 0;
 
   &::after {
     content: " ";
@@ -328,7 +340,7 @@ h3 {
   display: flex;
   gap: 0.4rem;
   color: var(--blue-neon-rgba);
-  font-size: clamp(0.45rem, 0.9vw, 0.7rem);
+  font-size: clamp(0.55rem, 0.9vw, 0.7rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
 
@@ -371,18 +383,26 @@ h3 {
   }
 }
 
-@media (orientation: landscape) {
-  body {
-    height: 100vh;
+@media (max-width: 1024px) and (orientation: landscape) {
+  h1 {
+    margin-bottom: 0.6rem;
   }
+}
 
+@media (orientation: landscape) {
   section {
-    height: 58vh;
+    height: 58dvh;
+    width: var(--full-width);
   }
 
 }
 
 @media (orientation: portrait) {
+  .centered {
+    justify-content: flex-start;
+    height: auto;
+  }
+
   .hud {
     clip-path: none;
     background: none;
@@ -394,5 +414,9 @@ h3 {
 
   .scroll {
     overflow: visible;
+  }
+
+  .auth-area {
+    font-size: 0.65rem;
   }
 }

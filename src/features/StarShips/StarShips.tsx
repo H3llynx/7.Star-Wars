@@ -34,6 +34,7 @@ export function StarShips() {
             {error && <ErrorImg />}
             {!error && !loading &&
                 <div className="ship-list scroll">
+                    {isPortrait && <AuthArea />}
                     <ul>
                         {ships.map(ship => {
                             return (
@@ -49,7 +50,6 @@ export function StarShips() {
                             onClick={handleNextPage}>
                             Load more starships
                         </Button>}
-                    {isPortrait && <AuthArea />}
                 </div>
             }
         </HudSection>

@@ -12,7 +12,7 @@ export function FilmCard({ film }: { film: Film }) {
             </div>
             <div className="film-info">
                 <span className="film-status">ARCHIVED</span>
-                <h4 className="film-title">{film.title}</h4>
+                <p className="film-title">{film.title}</p>
             </div>
         </div>
     );

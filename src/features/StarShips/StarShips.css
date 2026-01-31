@@ -97,6 +97,8 @@
 
 @media (max-width: 600px) and (orientation: portrait) {
     .ship-list {
-        padding: 0.2rem;
+        width: var(--full-width);
+        margin: auto;
+        padding: 0;
     }
 }
