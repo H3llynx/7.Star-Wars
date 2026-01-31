@@ -14,10 +14,11 @@
   --blue-neon: rgb(143, 220, 255);
   --red: rgb(255, 43, 43);
   --red-rgba: rgba(255, 43, 43, 0.8);
-  --cyan: var(--cyan);
+  --cyan: #00ffff;
   --cyan-rgba: rgba(0, 255, 255, 0.6);
   --cyan-rgba-2: rgba(0, 255, 255, 0.3);
   --cyan-rgba-3: rgba(0, 255, 255, 0.1);
+  --cyan-rgba-4: rgba(0, 255, 255, 0.8);
   --neon-gradient: linear-gradient(90deg,
       rgb(200, 243, 255),
       rgb(143, 220, 255),
@@ -382,10 +383,6 @@ h3 {
 }
 
 @media (orientation: portrait) {
-  .hud-screen {
-    display: none;
-  }
-
   .hud {
     clip-path: none;
     background: none;
