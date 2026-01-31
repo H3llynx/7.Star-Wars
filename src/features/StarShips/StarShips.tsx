@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector, useScreen } from '../../app/hooks';
 import { AuthArea } from "../../components/AuthArea/AuthArea";
 import { Button } from "../../components/Button/Button";
@@ -15,18 +15,23 @@ export function StarShips() {
         state => state.starships
     );
     const { isPortrait } = useScreen();
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        localStorage.removeItem("starships");
         if (ships.length === 0) {
             dispatch(fetchStarships(currentApiPage));
         }
     }, []);
 
     const handleNextPage = () => {
+        const scrollPosition = containerRef.current?.scrollTop;
         const nextPage = currentApiPage + 1
         dispatch(setPage(nextPage));
-        dispatch(fetchStarships(nextPage))
+        dispatch(fetchStarships(nextPage)).then(() => {
+            if (containerRef.current && scrollPosition !== undefined) {
+                containerRef.current.scrollTop = scrollPosition;
+            }
+        });
     };
 
     return (
@@ -34,7 +39,7 @@ export function StarShips() {
             {loading && <Loading />}
             {error && <ErrorImg />}
             {!error && !loading &&
-                <div className="ship-list scroll">
+                <div className="ship-list scroll" ref={containerRef}>
                     {isPortrait && <AuthArea />}
                     <ul>
                         {ships.map(ship => {
