@@ -7,7 +7,7 @@ article {
 }
 
 .ship-info {
-    padding: 3rem 2rem;
+    padding: 3rem 0;
     width: 100%;
 }
 
@@ -69,11 +69,10 @@ article {
     gap: 1rem;
 }
 
-.hud-pilot {
+.hud-flex {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-
 }
 
 .row {
@@ -89,7 +88,7 @@ article {
 
 @media (max-width: 1200px) {
     .ship-info {
-        padding: 2.5rem;
+        padding: 2.5rem 0;
     }
 }
 
@@ -100,6 +99,6 @@ article {
     }
 
     .ship-info {
-        padding: 2rem;
+        padding: 0;
     }
 }

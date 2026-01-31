@@ -4,9 +4,9 @@ import { useAppDispatch, useAppSelector, useScreen } from '../../../../app/hooks
 import { ErrorImg } from '../../../../components/ErrorImg/ErrorImg';
 import { HudSection } from '../../../../components/HudSection/HudSection';
 import { Loading } from '../../../../components/Loading/Loading';
-import { ScreenContext } from '../../../../context/ScreenContext';
 import { fetchShipById } from '../../StarShipsSlice';
 import type { StarShip } from '../../types/types';
+import { FilmCard } from '../FilmCard/FilmCard';
 import { PilotCard } from '../PilotCard/PilotCard';
 import "./ShipView.css";
 
@@ -21,7 +21,7 @@ export function ShipView() {
     const { id } = useParams<{ id: string }>();
     const shipId = Number(id);
 
-    const { isPortrait } = useScreen(ScreenContext);
+    const { isPortrait } = useScreen();
 
     useEffect(() => {
         if (!ship) {
@@ -102,15 +102,25 @@ export function ShipView() {
                             {ship.pilots.length > 0 &&
                                 <div className="hud-section">
                                     <h2>PILOTS</h2>
-                                    <div className="hud-pilot">
+                                    <div className="hud-flex">
                                         {ship.pilots.map(pilot => {
                                             return (
-                                                <PilotCard pilot={pilot} />
+                                                <PilotCard key={`p-${pilot.id}`} pilot={pilot} />
                                             )
                                         })}
                                     </div>
                                 </div>
                             }
+                            <div className="hud-section">
+                                <h2>FILMS</h2>
+                                <div className="film-scroll">
+                                    {ship.films.map(film => {
+                                        return (
+                                            <FilmCard key={`f-${film.id}`} film={film} />
+                                        )
+                                    })}
+                                </div>
+                            </div>
                         </div>
                     </article>
                 }

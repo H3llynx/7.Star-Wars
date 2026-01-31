@@ -15,7 +15,7 @@ export type StarShip = {
     hyperdrive_rating: string;
     MGLT: string;
     pilots: Pilot[];
-    films: string[];
+    films: Film[];
     url: string;
 }
 
@@ -23,4 +23,16 @@ export type Pilot = {
     id: string;
     name: string;
     src: string;
+}
+
+export type Film = {
+    id: string;
+    title: string;
+    episode: number;
+    src: string;
+}
+
+export type FilmInfo = {
+    title: string;
+    episode: number;
 }

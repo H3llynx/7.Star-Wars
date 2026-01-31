@@ -12,14 +12,9 @@
     }
 }
 
-.hud-screen {
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
-}
-
 .hud-overlay {
     background: url(../../assets/svg/hud-border.svg);
+    background-size: 100% 100%;
     position: absolute;
     top: 50%;
     left: 50%;

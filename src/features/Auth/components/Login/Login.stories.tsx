@@ -21,4 +21,4 @@ export const Loading: Story = {
         });
         return <Login onClick={() => { }} />;
     }
-}
+};

@@ -1,31 +1,4 @@
 .hud-card {
-    display: block;
-    color: inherit;
-    width: 100%;
-    height: 100%;
-    max-width: 380px;
-    position: relative;
-    z-index: 0;
-    filter:
-        drop-shadow(0 0 3px var(--blue-neon));
-
-    &:hover,
-    &:focus-visible {
-        transform: scale(1.05);
-        filter: drop-shadow(0 0 15px var(--blue-neon));
-        z-index: 2;
-    }
-}
-
-.hud-frame {
-    height: 100%;
-    clip-path: var(--hud-clip);
-    background:
-        var(--hud-gradient);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    padding: 3rem 1.5rem 1.5rem 1.5rem;
-    position: relative;
     display: grid;
     grid-template-columns: 30% 1fr;
     grid-template-rows: repeat(2, auto);
@@ -33,6 +6,28 @@
         "image title"
         "image stats";
     gap: 1rem;
+    width: 100%;
+    height: 100%;
+    max-width: 380px;
+    position: relative;
+    z-index: 0;
+    clip-path: var(--hud-clip);
+    background: var(--hud-gradient);
+    padding: 3rem 1.5rem 1.5rem 1.5rem;
+
+    &:hover,
+    &:focus-visible {
+        transform: scale(1.05);
+        z-index: 2;
+    }
+
+    &::before {
+        content: " ";
+        position: absolute;
+        inset: 0;
+        background: url(../../../../assets/svg/hud-border.svg);
+        background-size: 100% 100%;
+    }
 }
 
 .ship-img {
@@ -89,7 +84,7 @@ h2 {
 
 
 @media (max-width: 690px) and (orientation: landscape) {
-    .hud-frame {
+    .hud-card {
         padding: 3rem 1rem 1rem 1rem;
         grid-template-columns: 20% 1fr;
     }
