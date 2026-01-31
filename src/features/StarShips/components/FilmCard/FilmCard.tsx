@@ -3,7 +3,7 @@ import "./FilmCard.css";
 
 export function FilmCard({ film }: { film: Film }) {
     return (
-        <div className="film-card">
+        <div className="film-card" tabIndex={0}>
             <span className="episode-badge">
                 EP. {film.episode}
             </span>

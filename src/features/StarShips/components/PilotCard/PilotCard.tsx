@@ -3,7 +3,7 @@ import "./PilotCard.css";
 
 export function PilotCard({ pilot }: { pilot: Pilot }) {
     return (
-        <div className="pilot-card">
+        <div className="pilot-card" tabIndex={0}>
             <div className="pilot-avatar">
                 <img src={pilot.src} alt={""}
                     onError={(e) => {
