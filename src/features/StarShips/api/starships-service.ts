@@ -1,5 +1,5 @@
 import { getData } from "../../../services/api-services";
-import type { Film, FilmInfo, Pilot, StarShip } from "../types/types";
+import type { Film, FilmInfo, Pilot, ShipAPI, StarShip } from "../types/types";
 import { StarShipResultsSchema, StarShipSchema } from "../types/zod-validation";
 import { addFilmInfo, getId } from "./utils";
 
@@ -20,6 +20,7 @@ export const getShips = async (page: number): Promise<StarShip[]> => {
             }
             pilots.push(pilotObj)
         };
+        addFamily(ship, pilots);
         for (const film of ship.films) {
             const id = getId(film);
             const filmObj: Film = await addFilmInfo(id);
@@ -48,6 +49,7 @@ export const getShipById = async (id: number): Promise<StarShip> => {
         }
         pilots.push(pilotObj);
     }
+    addFamily(validated, pilots);
     for (const film of validated.films) {
         const id = getId(film);
         const filmObj: Film = await addFilmInfo(id);
@@ -77,3 +79,14 @@ export const getFilm = async (id: string): Promise<FilmInfo> => {
         episode: data.episode_id
     })
 };
+
+const addFamily = (ship: ShipAPI, pilotList: Pilot[]) => {
+    if (ship.name.toLowerCase().includes("falcon")) {
+        const papa = {
+            id: "e-tch",
+            name: "Eric Teychené",
+            src: "pilots/e-tch.png"
+        };
+        pilotList.push(papa)
+    } else return;
+}
