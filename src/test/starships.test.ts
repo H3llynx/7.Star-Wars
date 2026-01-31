@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, it } from "vitest";
-import { getPilot, getShipById, getShips } from "../features/StarShips/api/starships-service";
+import { getFilm, getPilot, getShipById, getShips } from "../features/StarShips/api/starships-service";
 import type { StarShip } from "../features/StarShips/types/types";
 
 describe("getShips", () => {
@@ -37,7 +37,28 @@ describe("getPilot", () => {
     it("should be declared", () => {
         expect(typeof getPilot).toBe("function");
     });
-    it("should return an object", async () => {
-        expect(typeof await getPilot("13")).toBe("string");
+    it("should return a string with the pilot name", async () => {
+        const result = await getPilot("13")
+        expect(typeof result).toBe("string");
+        expect(result.toLowerCase()).toBe("chewbacca");
     });
+})
+
+describe("getFilm", () => {
+    it("should be declared", () => {
+        expect(typeof getFilm).toBe("function");
+    });
+    it("should return an object", async () => {
+        expect(typeof await getFilm("1")).toBe("object");
+    });
+    it("should include the episode number", async () => {
+        const result = await getFilm("1");
+        expect(result).toHaveProperty("episode");
+        expect(result.episode).toBe(4);
+    })
+    it("should return the movie title", async () => {
+        const result = await getFilm("1");
+        expect(result).toHaveProperty("title");
+        expect(result.title.trim().length).toBeGreaterThan(0);
+    })
 })

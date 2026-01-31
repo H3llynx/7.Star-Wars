@@ -76,4 +76,4 @@ export const getFilm = async (id: string): Promise<FilmInfo> => {
         title: data.title,
         episode: data.episode_id
     })
-}
+};
