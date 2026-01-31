@@ -104,7 +104,7 @@
 
 .terminal-text {
     color: rgba(200, 220, 255, 0.75);
-    font-size: clamp(0.55rem, 1vw, 0.75rem);
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
     line-height: 1.6;
     letter-spacing: 0.12em;
 }
@@ -112,7 +112,7 @@
 .terminal-status {
     margin-top: 1rem;
     color: var(--blue-neon-rgba);
-    font-size: clamp(0.45rem, 0.8vw, 0.6rem);
+    font-size: clamp(0.5rem, 0.8vw, 0.6rem);
     letter-spacing: 0.18em;
     line-height: 1.5;
     text-transform: uppercase;

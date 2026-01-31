@@ -73,7 +73,7 @@
 .loading-text {
     color: var(--light);
     font-family: var(--font-orbitron);
-    font-size: clamp(0.5rem, 1vw, 0.7rem);
+    font-size: clamp(0.6rem, 1vw, 0.7rem);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     display: flex;
