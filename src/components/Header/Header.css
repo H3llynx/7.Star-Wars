@@ -44,7 +44,7 @@ nav {
     position: relative;
     padding: 0.5rem 0.8rem;
     font-family: var(--font-orbitron);
-    font-size: clamp(0.65rem, 1vw, 0.85rem);
+    font-size: 0.85rem;
     text-transform: uppercase;
     font-weight: 500;
 
