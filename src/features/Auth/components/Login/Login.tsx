@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { Input } from "../../../../components/Input/Input";
 import { Loading } from "../../../../components/Loading/Loading";
 import "../../Auth.css";
 import { loginUser } from "../../AuthSlice";
 import { FormButton } from "../FormButton/FormButton";
 import { GoogleButton } from "../GoogleButton/GoogleButton";
-import { Input } from "../Input/Input";
 import { SwitchFormButton } from "../SwitchFormButton/SwitchFormButton";
 
 export function Login({ onClick }: { onClick: () => void }) {
@@ -35,12 +35,14 @@ export function Login({ onClick }: { onClick: () => void }) {
                         id="email"
                         type="email"
                         label="email"
+                        required
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <Input
                         id="password"
                         type="password"
                         label="password"
+                        required
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className="button-group">

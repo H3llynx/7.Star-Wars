@@ -28,7 +28,7 @@
 .ship-list {
     width: 100%;
     height: 100%;
-    padding: 3rem 2rem 2rem 2rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -80,12 +80,8 @@
         height: 30px;
     }
 
-    .ship-list {
-        padding: 2.5rem;
-
-        ul {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+    .ship-list ul {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { Input } from "../../../../components/Input/Input";
 import { Loading } from "../../../../components/Loading/Loading";
 import "../../Auth.css";
 import { registerUser } from "../../AuthSlice";
 import { FormButton } from "../FormButton/FormButton";
 import { GoogleButton } from "../GoogleButton/GoogleButton";
-import { Input } from "../Input/Input";
 import { SwitchFormButton } from "../SwitchFormButton/SwitchFormButton";
 
 export function Register({ onClick }: { onClick: () => void }) {
@@ -37,6 +37,7 @@ export function Register({ onClick }: { onClick: () => void }) {
                         type="text"
                         label="name"
                         value={name}
+                        required
                         onChange={(e) => setName(e.target.value)}
                     />
                     <Input
@@ -44,6 +45,7 @@ export function Register({ onClick }: { onClick: () => void }) {
                         type="email"
                         label="email"
                         value={email}
+                        required
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <Input
@@ -51,6 +53,7 @@ export function Register({ onClick }: { onClick: () => void }) {
                         type="password"
                         label="password"
                         value={password}
+                        required
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className="button-group">

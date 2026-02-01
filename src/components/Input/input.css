@@ -3,6 +3,11 @@ label {
     gap: 0.5rem;
     opacity: 0.9;
     font-size: 0.65rem;
+    position: relative;
+
+    .form-label {
+        flex-shrink: 0;
+    }
 
     .terminal-prompt {
         opacity: 0.8;
@@ -31,6 +36,20 @@ input {
     &:user-invalid {
         color: var(--red);
     }
+}
+
+input::placeholder,
+label:first-of-type input:focus::placeholder {
+    visibility: hidden
+}
+
+label:first-of-type input::placeholder {
+    visibility: visible;
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--light);
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
 }
 
 .invalid-svg {

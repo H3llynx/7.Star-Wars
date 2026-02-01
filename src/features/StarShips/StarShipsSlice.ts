@@ -5,6 +5,7 @@ import type { StarShip } from './types/types';
 type StarshipsState = {
     ships: StarShip[];
     loading: boolean;
+    moreShipsLoading: boolean;
     error: string | null;
     currentApiPage: number;
     selectedShip: StarShip | null;
@@ -20,6 +21,7 @@ const loadShips = () => {
 const initialState: StarshipsState = {
     ships: loadShips(),
     loading: false,
+    moreShipsLoading: false,
     error: null,
     currentApiPage: 1,
     selectedShip: null,
@@ -28,6 +30,13 @@ const initialState: StarshipsState = {
 
 export const fetchStarships = createAsyncThunk(
     "starships/fetchStarships",
+    async (page: number) => {
+        return await getShips(page);
+    }
+);
+
+export const fetchMoreShips = createAsyncThunk(
+    "starships/fetchMoreShips",
     async (page: number) => {
         return await getShips(page);
     }
@@ -63,15 +72,24 @@ const starshipsSlice = createSlice({
             .addCase(fetchStarships.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
-                if (state.currentApiPage === 1) {
-                    state.ships = action.payload;
-                    localStorage.setItem("starships", JSON.stringify(action.payload));
-                } else {
-                    state.ships = [...state.ships, ...action.payload];
-                }
+                state.ships = action.payload;
+                localStorage.setItem("starships", JSON.stringify(action.payload));
             })
             .addCase(fetchStarships.rejected, (state, action) => {
                 state.loading = false;
+                state.error = action.error.message || "Error";
+            })
+            .addCase(fetchMoreShips.pending, (state) => {
+                state.moreShipsLoading = true;
+                state.error = null;
+            })
+            .addCase(fetchMoreShips.fulfilled, (state, action) => {
+                state.moreShipsLoading = false;
+                state.error = null;
+                state.ships = [...state.ships, ...action.payload];
+            })
+            .addCase(fetchMoreShips.rejected, (state, action) => {
+                state.moreShipsLoading = false;
                 state.error = action.error.message || "Error";
             })
             .addCase(fetchShipById.pending, (state) => {

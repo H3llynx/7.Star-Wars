@@ -26,27 +26,13 @@ form {
     width: min(600px, 80%);
     position: relative;
     z-index: 2;
-
-    input::placeholder,
-    label:first-of-type input:focus::placeholder {
-        visibility: hidden
-    }
-
-    label:first-of-type input::placeholder {
-        visibility: visible;
-        font-weight: 900;
-        font-size: 1rem;
-        color: var(--light);
-        margin-left: 2px;
-        animation: blink 1s step-end infinite;
-    }
 }
 
 .button-group {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    place-self: end;
+    justify-content: end;
 }
 
 .auth-cta {
@@ -63,45 +49,10 @@ form {
 
     &[type="submit"] {
         background: var(--cyan-rgba-3);
-
-        &:hover,
-        &:focus-visible {
-            background: var(--cyan-rgba-2);
-            border: 1px solid var(--cyan-rgba-2);
-            border-color: var(--blue-neon);
-            color: var(--blue-neon);
-            box-shadow:
-                0 0 25px var(--cyan-rgba-2),
-                inset 0 0 20px var(--cyan-rgba-2);
-            transform: translateY(-1px);
-        }
     }
 
     &[type="button"] {
         position: relative;
-
-        &:hover::after,
-        &:focus-visible::after {
-            content: " ";
-            height: 2px;
-            background: var(--blue-neon);
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            animation: nav-border 0.8s forwards;
-
-        }
-    }
-
-    &:hover .terminal-prompt,
-    &:focus-visible .terminal-prompt {
-        opacity: 1;
-    }
-
-    &:hover .button-status,
-    &:focus-visible .button-status {
-        opacity: 1;
-        animation: blink-status 1.5s ease-in-out infinite;
     }
 
     .terminal-prompt {
@@ -118,6 +69,42 @@ form {
     transition: all 0.3s ease;
 }
 
+@media (hover: hover) and (pointer: fine) {
+
+    .auth-cta[type="submit"]:hover,
+    .auth-cta[type="submit"]:focus-visible {
+        background: var(--cyan-rgba-2);
+        border: 1px solid var(--cyan-rgba-2);
+        border-color: var(--blue-neon);
+        color: var(--blue-neon);
+        box-shadow:
+            0 0 25px var(--cyan-rgba-2),
+            inset 0 0 20px var(--cyan-rgba-2);
+        transform: translateY(-1px);
+    }
+
+    .auth-cta:hover::after,
+    .auth-cta:focus-visible::after {
+        content: " ";
+        height: 2px;
+        background: var(--blue-neon);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        animation: nav-border 0.8s forwards;
+    }
+
+    .auth-cta:hover .terminal-prompt,
+    .auth-cta:focus-visible .terminal-prompt {
+        opacity: 1;
+    }
+
+    .auth-cta:hover .button-status,
+    .auth-cta:focus-visible .button-status {
+        opacity: 1;
+        animation: blink-status 1.5s ease-in-out infinite;
+    }
+}
 
 @media (max-width: 1024px) {
     .button-group {
@@ -128,6 +115,9 @@ form {
 @media (orientation: portrait) {
     .button-group {
         margin-top: 3rem;
-        place-self: center;
+
+        button {
+            width: 100%;
+        }
     }
 }
