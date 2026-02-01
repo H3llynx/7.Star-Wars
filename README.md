@@ -42,22 +42,20 @@ You can try the app via the following link: https://h3llynx.github.io/7.Star-War
 
 1. **Desktop view**:
 
-![Screenshot](./public/screenshots/screenshot1.png)
-![Screenshot](./public/screenshots/screenshot2.png)
+<div align="left">
+<img src="./public/screenshots/screenshot1.png" width="45%">
+<img src="./public/screenshots/screenshot2.png" width="45%">
+</div>
 
 2. **Mobile view**:
-
-![Screenshot](./public/screenshots/screenshot3.png)
-![Screenshot](./public/screenshots/screenshot4.png)
-
+<div align="left">
+<img src="./public/screenshots/screenshot3.png" width="200">
+<img src="./public/screenshots/screenshot4.png" width="200">
+</div>
 ---
 
 ## Quick Start
 
-### Prerequisites
-- Node.js 18+ and npm
-
-### Installation
 ```bash
 # Clone the repository
 git clone https://github.com/H3llynx/7.Star-Wars.git
