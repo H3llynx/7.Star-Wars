@@ -18,22 +18,6 @@
                 transparent);
         animation: scan 3s linear infinite;
     }
-
-    &:hover,
-    &:focus-visible {
-        background: var(--cyan-rgba-2);
-        border-color: var(--blue-neon);
-        color: var(--blue-neon);
-        box-shadow:
-            0 0 25px var(--cyan-rgba-2),
-            inset 0 0 20px var(--cyan-rgba-2);
-        transform: translateY(-1px);
-
-        .terminal-prompt,
-        .google-terminal-icon {
-            opacity: 1
-        }
-    }
 }
 
 
@@ -48,4 +32,23 @@
     box-shadow:
         0 0 15px var(--cyan-rgba-2),
         inset 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+    .google-btn:hover,
+    &:focus-visible {
+        background: var(--cyan-rgba-2);
+        border-color: var(--blue-neon);
+        color: var(--blue-neon);
+        box-shadow:
+            0 0 25px var(--cyan-rgba-2),
+            inset 0 0 20px var(--cyan-rgba-2);
+        transform: translateY(-1px);
+
+        .terminal-prompt,
+        .google-terminal-icon {
+            opacity: 1
+        }
+    }
 }

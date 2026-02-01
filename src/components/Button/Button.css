@@ -1,0 +1,4 @@
+.cta-loading::after {
+    display: inline-block;
+    animation: blink-dots 2s steps(4) infinite;
+}
