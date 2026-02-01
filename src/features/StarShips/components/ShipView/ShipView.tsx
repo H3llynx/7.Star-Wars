@@ -107,7 +107,8 @@ export function ShipView() {
                                     <div className="hud-flex">
                                         {ship.pilots.map(pilot => {
                                             return (
-                                                <PilotCard key={`p-${pilot.id}`} pilot={pilot} />
+                                                <PilotCard key={`p-${pilot.id}`}
+                                                    {...pilot} />
                                             )
                                         })}
                                     </div>
@@ -118,7 +119,8 @@ export function ShipView() {
                                 <div className="film-scroll">
                                     {ship.films.map(film => {
                                         return (
-                                            <FilmCard key={`f-${film.id}`} film={film} />
+                                            <FilmCard key={`f-${film.id}`}
+                                                {...film} />
                                         )
                                     })}
                                 </div>
